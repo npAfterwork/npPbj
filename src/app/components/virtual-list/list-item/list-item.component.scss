@@ -1,0 +1,140 @@
+@import "../../../../theme/variables";
+@import "../../../../theme/mixins";
+
+:host {
+  display: block;
+  width: 100%;
+  background-color: var(--ion-background-color);
+
+  .item-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex: 1 1 100%;
+    overflow: hidden;
+
+  }
+
+  pbj-list-item-image {
+    height: var(--pbj-list-item-height, 32px);
+    width: var(--pbj-list-item-height, 32px);
+    margin-right: 0;
+    flex: 0 0 auto;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 0 1rem 0 0;
+    overflow: hidden;
+
+    .pbj-title-line {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+
+      span {
+        //padding: .2rem 0; // baseline ...
+        color: var(--ion-color-primary, #3880ff);
+        @include line-clamp(2, 1rem, 1, 0);
+      }
+    }
+
+    .subtitle {
+      display: flex;
+      padding: .5rem 0 0 0;
+      width: 100%;
+      align-items: center;
+
+      span {
+        @include line-clamp(1, 1rem, 1, 0);
+        color: var(--ion-color-step-800);
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .extra-large {
+    display: none;
+  }
+
+  .more-end {
+    display: none;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    height: var(--pbj-list-item-height, 32px);
+    background-color: #0000003b;
+    border-bottom: 1px solid var(--ion-color-step-50);
+
+    &.small {
+      .header {
+        padding: 0;
+      }
+
+      .subtitle {
+        display: none;
+      }
+
+      .pbj-title-line {
+        span {
+          @include line-clamp(1, 1rem, 1, 0);
+          font-size: 0.8rem;
+        }
+      }
+
+      .more-start {
+        display: none;
+      }
+
+      .more-end {
+        display: block;
+      }
+    }
+
+    &.medium {
+      .buttons {
+        flex-direction: column;
+      }
+
+
+    }
+
+    &.large {
+      .buttons {
+        flex-direction: column;
+      }
+
+      .subtitle {
+      }
+
+      .extra-large {
+        display: block;
+      }
+
+      .pbj-title-line {
+        span {
+          @include line-clamp(6, 1rem, 1, 0);
+        }
+      }
+    }
+  }
+
+
+}
+
+
+

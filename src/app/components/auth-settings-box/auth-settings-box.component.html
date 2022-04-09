@@ -1,0 +1,24 @@
+<form ngForm>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label>
+        Login
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'SETTINGS.SERVER.SERVER' | translate }}</ion-label>
+      <ion-input (ionBlur)="onUserChanged()" name="server" [(ngModel)]="auth.server" [placeholder]="'SETTINGS.SERVER.SERVER_PH' | translate" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'SETTINGS.SERVER.USER' | translate }}</ion-label>
+      <ion-input (ionBlur)="onUserChanged()" name="name" [(ngModel)]="auth.username" [placeholder]="'SETTINGS.SERVER.USER_PH' | translate" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button fill="clear" size="small" class="btn-show-password" (click)="showHidePassword()" [style.color]="passwordIconColor">
+        <ion-icon slot="icon-only" name="eye-sharp"></ion-icon>
+      </ion-button>
+      <ion-label position="stacked">{{ 'SETTINGS.SERVER.PASSWORD' | translate }}</ion-label>
+      <ion-input (ionBlur)="onUserChanged()" name="password" [type]="passwordStyle" [(ngModel)]="auth.password" [placeholder]="'SETTINGS.SERVER.PASSWORD_PH' | translate"></ion-input>
+    </ion-item>
+  </ion-list>
+</form>

@@ -1,0 +1,144 @@
+:root {
+  //.dark {
+  --ion-color-primary: #fefefe;
+  --ion-color-primary-rgb: 254, 254, 254;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #b0b0b0;
+  --ion-color-primary-tint: #cecece;
+
+  --ion-color-secondary: #1ed760;
+  --ion-color-secondary-rgb: 30, 215, 96;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #1abd54;
+  --ion-color-secondary-tint: #35db70;
+
+  --ion-color-tertiary: #4688d7;
+  --ion-color-tertiary-rgb: 70, 136, 215;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #3e78bd;
+  --ion-color-tertiary-tint: #5994db;
+
+  --ion-color-success: #1ed760;
+  --ion-color-success-rgb: 30, 215, 96;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #1abd54;
+  --ion-color-success-tint: #35db70;
+
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+  //}
+}
+
+:root {
+  //.dark {
+  //--ion-background-color: #282828;
+  //--ion-background-color-rgb: 40, 40, 40;
+  --pbj-text-color-title: #e2e2e2;
+  --pbj-text-color-subtitle: #aaaaaa;
+  --ion-text-color: #e2e2e2;
+  --ion-text-color-rgb: 226, 226, 226;
+
+  --ion-background-color: #181818;
+  --ion-background-color-rgb: 24, 24, 24;
+
+
+  //--ion-color-step-50: #2f2f2f;
+  //--ion-color-step-100: #353535;
+  //--ion-color-step-150: #3c3c3c;
+  //--ion-color-step-200: #424242;
+  //--ion-color-step-250: #494949;
+  //--ion-color-step-300: #4f4f4f;
+  //--ion-color-step-350: #565656;
+  //--ion-color-step-400: #5c5c5c;
+  //--ion-color-step-450: #636363;
+  //--ion-color-step-500: #696969;
+  //--ion-color-step-550: #707070;
+  //--ion-color-step-600: #767676;
+  //--ion-color-step-650: #7d7d7d;
+  //--ion-color-step-700: #838383;
+  //--ion-color-step-750: #8a8a8a;
+  //--ion-color-step-800: #909090;
+  //--ion-color-step-850: #979797;
+  //--ion-color-step-900: #9d9d9d;
+  //--ion-color-step-950: #a4a4a4;
+  //}
+}
+
+:root {
+  --ion-font-family: Roboto, sans-serif;
+  //--pbj-border: 1px solid var(--ion-tab-bar-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.07))));
+
+  //.dark {
+  --pbj-border: 1px solid var(--ion-tab-bar-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.07)))); // needs to be redefined cof css sort order
+  --ion-overlay-background-color: var(--ion-background-color);
+  //}
+}
+
+/**
+--ion-backdrop-color	Color of the Backdrop component
+--ion-overlay-background-color	Background color of the overlays
+--ion-border-color	Border color
+--ion-box-shadow-color	Box shadow color
+--ion-tab-bar-background	Background of the Tab bar
+--ion-tab-bar-background-focused	Background of the focused Tab bar
+--ion-tab-bar-border-color	Border color of the Tab bar
+--ion-tab-bar-color	Color of the Tab bar
+--ion-tab-bar-color-activated	Color of the activated Tab
+--ion-toolbar-background	Background of the Toolbar
+--ion-toolbar-border-color	Border color of the Toolbar
+--ion-toolbar-color	Color of the components in the Toolbar
+--ion-toolbar-color-activated	Color of the activated components in the Toolbar
+--ion-toolbar-color-unchecked	Color of the unchecked components in the Toolbar
+--ion-toolbar-color-checked	Color of the checked components in the Toolbar
+--ion-item-background	Background of the Item
+--ion-item-background-activated	Background of the activated Item
+--ion-item-border-color	Border color of the Item
+--ion-item-color	Color of the components in the Item
+--ion-placeholder-color	Color of the placeholder in inputs
+
+ --ion-font-family	Font family of the app
+--ion-statusbar-padding	Statusbar padding top of the app
+--ion-safe-area-top	Adjust the safe area inset top of the app
+--ion-safe-area-right	Adjust the safe area inset right of the app
+--ion-safe-area-bottom	Adjust the safe area inset bottom of the app
+--ion-safe-area-left	Adjust the safe area inset left of the app
+--ion-margin	Adjust the margin of the Margin attributes
+--ion-padding	Adjust the padding of the Padding attributes
+
+ */

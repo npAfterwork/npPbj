@@ -1,0 +1,36 @@
+<ion-toolbar>
+  <ion-segment (ionChange)="saveSettings()" [value]="box.size" [(ngModel)]="box.size">
+    <ion-segment-button *ngFor="let size of config.SIZES" [value]="size">
+      <ion-label>{{size}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Box type</ion-label>
+    <ion-select [(ngModel)]="box.boxtype" [value]="box.boxtype" (ionChange)="saveSettings()">
+      <ion-select-option *ngFor="let type of config.TYPES" [value]="type">{{type}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">List type</ion-label>
+    <ion-select [(ngModel)]="box.listtype" [value]="box.listtype" (ionChange)="saveSettings()">
+      <ion-select-option *ngFor="let type of config.LISTS" [value]="type">{{type}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Item type</ion-label>
+    <ion-select [(ngModel)]="box.itemtype" [value]="box.itemtype" (ionChange)="saveSettings()">
+      <ion-select-option *ngFor="let type of config.ITEMS" [value]="type">{{type}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Amount</ion-label>
+    <ion-input type="number" [value]="box.amount" (ionChange)="saveSettings()" [(ngModel)]="box.amount" step="5" min="5" max="40"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Rows</ion-label>
+    <ion-input type="number" [value]="box.rows" (ionChange)="saveSettings()" [(ngModel)]="box.rows" step="1" min="1" max="5"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="popoverService.closeCurrent()" fill="clear">Close</ion-button>
+</ion-list>

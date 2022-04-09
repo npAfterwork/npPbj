@@ -1,0 +1,24 @@
+<ion-header>
+  <pbj-toolbar search="true" [text]="pageName"></pbj-toolbar>
+</ion-header>
+<pbj-toolbelt az="true" root="true"
+              (changeMode)="toggleListMode()"
+              (changeSize)="toggleListSize()"
+              (changeListSettings)="changeListSettings($event)"
+></pbj-toolbelt>
+<pbj-type-chooser *ngIf="style === 'all'" [value]="type" [types]="possibleTypes" (typeChange)="changedType($event)"></pbj-type-chooser>
+<ion-content>
+  <pbj-virtual-list [headerfn]="headerFn"
+                    [items]="items" [itemSize]="itemSize" [panel]="isPanel"
+                    (play)="onPlay($event.ev, $event.item)"
+                    (more)="onMore($event.ev, $event.item)"
+  ></pbj-virtual-list>
+</ion-content>
+
+
+<!--<ion-fab vertical="bottom" horizontal="end" slot="fixed">-->
+<!--  <ion-fab-button (click)="uiService.createNewPodcast()" size="small">-->
+<!--    <ion-icon name="add-sharp"></ion-icon>-->
+<!--  </ion-fab-button>-->
+<!--</ion-fab>-->
+

@@ -1,0 +1,6 @@
+<div flex-col flex-center-center pbj-padding>
+  <ion-icon size="large" name="help-sharp"></ion-icon>
+  <h3>{{helpEntry.title | translate}}</h3>
+  <p [innerHtml]="helpEntry.msg | translate"></p>
+  <ion-button (click)="close()">Close</ion-button>
+</div>

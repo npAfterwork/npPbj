@@ -1,0 +1,18 @@
+<ion-header>
+  <pbj-toolbar back="true" [text]="type+' • '+list"></pbj-toolbar>
+</ion-header>
+<pbj-toolbelt (changeMode)="toggleListMode()"
+              (changeSize)="toggleListSize()"
+              (changeListSettings)="changeListSettings($event)"
+></pbj-toolbelt>
+<ng-container *ngIf="style !== 'none'">
+  <pbj-type-chooser *ngIf="style === 'all'" [value]="type" [types]="possibleTypes" (typeChange)="onTypeChange($event)"></pbj-type-chooser>
+  <pbj-list-chooser *ngIf="style !== 'list'" [value]="list" [lists]="possibleLists" (typeChange)="onListChange($event)"></pbj-list-chooser>
+</ng-container>
+<ion-content>
+  <pbj-virtual-list [items]="items" [itemSize]="itemSize" [panel]="isPanel"
+                    (play)="onPlay($event.ev, $event.item)"
+                    (more)="onMore($event.ev, $event.item)"
+  ></pbj-virtual-list>
+  <ion-button expand="full" size="default" fill="outline" [disabled]="noMoreItems" (click)="loadMore()"> Load Another Bunch</ion-button>
+</ion-content>

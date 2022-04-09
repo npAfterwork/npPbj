@@ -1,0 +1,25 @@
+@import "~theme/variables";
+
+:host {
+  height: $pbj-footer-height;
+  max-height: $pbj-footer-height;
+  overflow: hidden;
+}
+
+.pbj-a-z-popover {
+  --width: 90%;
+  --max-width: 720px;
+}
+
+.pbj-queue-modal {
+  bottom: $pbj-footer-height;
+}
+
+.pbj-new-channel-popover {
+  //--width: 100%;
+  //--min-width: auto;
+  //--max-width: auto;
+  //--height: 100%;
+  //--min-height: auto;
+  //--max-height: auto;
+}

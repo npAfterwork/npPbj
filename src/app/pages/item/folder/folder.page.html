@@ -1,0 +1,22 @@
+<ion-header>
+  <pbj-toolbar back="true" [text]="pageName"></pbj-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" (ionScroll)="scrollTop = $event.detail.scrollTop">
+  <pbj-view-content flex-item [item]="dataService.item$('folder') | async" (play)="onPlay($event.ev, $event.item)" (more)="onMore($event.ev, $event.item)"></pbj-view-content>
+  <pbj-toolbelt [scrollTop]="scrollTop"
+                (changeMode)="toggleListMode()"
+                (changeSize)="toggleListSize()"
+                (changeListSettings)="changeListSettings($event)"
+  ></pbj-toolbelt>
+  <pbj-virtual-list [hidden]="folder?.folders?.length === 0" [items]="dataService.sublist$('folderChildren') | async"
+                    [headerfn]="headerFn" [panel]="isPanel" [itemSize]="itemSize"
+                    (play)="onPlay($event.ev, $event.item)"
+                    (more)="onMore($event.ev, $event.item)"
+  ></pbj-virtual-list>
+  <pbj-virtual-list [hidden]="folder?.tracks?.length === 0" [items]="dataService.sublist$('folderTracks') | async"
+                    [headerfn]="headerFn" [panel]="false" itemSize="small"
+                    (play)="onPlay($event.ev, $event.item)"
+                    (more)="onMore($event.ev, $event.item)"
+  ></pbj-virtual-list>
+</ion-content>

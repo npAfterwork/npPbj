@@ -1,0 +1,37 @@
+@import "theme/variables";
+
+ion-content .scroll-y {
+  background: green !important;
+}
+
+:host {
+
+  pbj-view-content {
+
+  }
+
+  .tabs-inner {
+    //overflow-y: scroll;
+    //min-height: 150px;
+    //max-height: 100%;
+
+  }
+}
+
+pbj-toolbelt {
+  width: 100%;
+  top: 0;
+
+}
+
+.list-container {
+
+}
+
+[scrollYsdsd] {
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}

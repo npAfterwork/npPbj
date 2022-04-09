@@ -1,0 +1,35 @@
+<ion-content class="ion-padding">
+  <div class="wrapper">
+    <ion-img src="/assets/img/logo.svg" style="max-height: 200px; max-width: 300px;"></ion-img>
+    <ion-card [hidden]="loading">
+      <ion-card-content>
+        <pbj-auth-box #server></pbj-auth-box>
+
+
+        <ion-toolbar>
+          <ion-button slot="end" color="primary" fill="outline"
+                      (click)="goOnline()">{{'BUTTONS.ONLINE' | translate}}</ion-button>
+        </ion-toolbar>
+
+
+        <!--        <ion-button color="primary" fill="solid" (click)="goOffline()">{{'BUTTONS.OFFLINE' | translate}}</ion-button>-->
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="loading-card" [hidden]="!loading">
+      <!--                <ion-img src="/assets/img/logo.svg"></ion-img>-->
+      <ion-card-header>
+        <ion-card-title>Welcome</ion-card-title>
+        <ion-card-subtitle>...to the world of tomorrow</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="bulb-sharp" color="primary"></ion-icon>
+          {{tipOfTheDay.tip$ | async | translate}}
+        </ion-item>
+        <pbj-progress-bar></pbj-progress-bar>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

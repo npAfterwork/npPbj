@@ -1,0 +1,9 @@
+<div class="progress-outer">
+  <div class="progress-inner" [style.width]="percentage + '%'">
+    {{percentage}}%
+  </div>
+</div>
+<p>
+  {{current}} / {{total}}
+  {{msg | translate}}
+</p>

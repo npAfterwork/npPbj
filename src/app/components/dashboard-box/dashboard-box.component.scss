@@ -1,0 +1,77 @@
+:host {
+  display: block;
+  overflow-scrolling: touch;
+  min-height: 300px;
+
+  .box-wrapper {
+    border: 1px solid var(--ion-color-step-50);
+    --background: var(--ion-color-step-250);
+
+    ion-toolbar {
+      --min-height: 0;
+      --background: var(--ion-color-step-150);
+    }
+
+    ///** virtual list settings...
+    // case 'small':
+    //        width = this.panel ? 106 : -1;
+    //        height = this.panel ? 106 : 48;
+    //        break;
+    //      case 'medium':
+    //        width = this.panel ? 160 : -1;
+    //        height = this.panel ? 160 : 75;
+    //        break;
+    //      case 'large':
+    //        width = this.panel ? 210 : -1;
+    //        height = this.panel ? 210 : 150;
+    // */
+    &.small.list {
+      --pbj-list-item-height: 48px;
+    }
+
+    &.medium.list {
+      --pbj-list-item-height: 75px;
+    }
+
+    &.large.list {
+      --pbj-list-item-height: 150px;
+    }
+
+    &.small.panel {
+      --pbj-list-item-height: 100px;
+      --pbj-list-item-width: 100px;
+      --pbj-list-item-base-size: 100px;
+    }
+
+    &.medium.panel {
+      --pbj-list-item-height: 140px;
+      --pbj-list-item-width: 140px;
+      --pbj-list-item-base-size: 140px;
+    }
+
+    &.large.panel {
+      --pbj-list-item-height: 180px;
+      --pbj-list-item-width: 180px;
+      --pbj-list-item-base-size: 160px;
+    }
+  }
+
+  .row-wrapper {
+    width: 100%;
+    display: block;
+    min-height: calc(var(--pbj-list-item-height, 200px) * var(--pbj-dashboard-box-rows, 1) + 8px); // current height * rows + scrollbar
+  }
+
+  pbj-list-item-panel {
+    //display: inline;
+    --pbj-list-item-row-width: initial;
+    overflow: unset;
+  }
+  .loading {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+

@@ -1,0 +1,11 @@
+<ion-header>
+  <pbj-toolbar></pbj-toolbar>
+  <ion-toolbar>
+    <ion-searchbar slot="start" #searchbar animated (ionChange)="onSeachChange($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<pbj-choosebar [value]="type" [choices]="typeChoices" (valueChange)="onTypeChange($event)"></pbj-choosebar>
+<ion-content>
+  <pbj-virtual-list [items]="items" itemSize="medium" [headerfn]="headerfn"></pbj-virtual-list>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modal Content</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-radio-group [allowEmptySelection]="true" [(ngModel)]="current">
+      <ion-item *ngFor="let root of roots">
+        <ion-avatar slot="start" class="hydrated">
+          <pbj-list-item-image [item]="root" [size]="40"></pbj-list-item-image>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{root.name}}</h2>
+          <p>{{root.path}}</p>
+        </ion-label>
+        <ion-toggle color="secondary" [name]="root.name" [(ngModel)]="root.enabled"></ion-toggle>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

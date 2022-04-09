@@ -1,0 +1,29 @@
+<div class="pbj-panel-container" *ngIf="checkItems(items)" [ngClass]="size">
+  <div class="pbj-panel-item-container" *ngFor="let item of items">
+    <div class="pbj-panel-item ion-activatable" pbjPress (pressed)="preventAndEmit($event, more, item)" [class.expanded]="uiService.isExpanded(item)" [ngClass]="size">
+      <pbj-list-item-image *ngIf="mode !== 'no-images'" [item]="item" size="150"></pbj-list-item-image>
+      <div class="pbj-panel-item-header" *ngIf="info(item, 'item');let itemInfo;" (click)="uiService.toggleExpand(item)">
+        <p class="pbj-panel-subtitle ">{{itemInfo['subline']}}</p>
+        <p class="pbj-panel-title"><span>{{itemInfo.name}}</span></p>
+        <ion-toolbar *ngIf="uiService.isExpanded(item)">
+          <ion-button shape="round" fill="clear" slot="start" (click)="preventAndEmit($event, more, item)">
+            <ion-icon name="ellipsis-horizontal-sharp" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button shape="round" fill="solid" color="secondary" slot="end" (click)="preventAndEmit($event, play, item)">
+            <ion-icon name="play-sharp" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-toolbar>
+      </div>
+
+      <div class="overlay">
+        <div class="right" (click)="preventAndEmit($event, navigateTo, item)">
+          <!--          <i class="icon ion-md-navigate"></i>-->
+        </div>
+        <div class="left" (click)="preventAndEmit($event, select, item)">
+          <!--          <i class="icon ion-md-checkmark-circle-sharp"></i>-->
+        </div>
+      </div>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </div>
+</div>

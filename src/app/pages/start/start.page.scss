@@ -1,0 +1,28 @@
+:host {
+  .wrapper {
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 90%;
+  }
+
+  ion-list {
+    padding: 0;
+  }
+
+  ion-card {
+    ion-card-content {
+      padding: 0;
+    }
+  }
+
+  .loading-card {
+
+  }
+}

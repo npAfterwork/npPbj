@@ -1,0 +1,75 @@
+ion-header {
+  border-bottom: var(--pbj-border);
+  //border-bottom: var(--ion-border);
+  box-shadow: none;
+
+  &::after {
+    display: none !important;
+    //height: 1px !important;
+    //bottom: -1px !important;
+  }
+}
+
+ion-item-divider {
+  border: 0;
+  margin: 0;
+  --background: var(--ion-background-color);
+  color: var(--pbj-text-color-subtitle);
+  width: 100%;
+}
+
+ion-item {
+  &[focusable] {
+    &:hover {
+      --ion-background-color: var(--ion-color-step-150);
+    }
+  }
+}
+
+ion-toolbar {
+  --min-height: 0;
+}
+
+ion-segment {
+  --min-height: 0;
+  border-radius: 0;
+  overflow-x: auto;
+
+  ion-segment-button {
+    --border-radius: 0;
+  }
+}
+
+ion-alert {
+  //--background: var(--pbj-light-color) !important;
+
+  //noinspection ALL
+  .alert-button-group-vertical {
+    flex-direction: row !important;
+
+    button {
+      &.primary {
+        flex: 1;
+      }
+    }
+
+    //noinspection ALL
+    .alert-button-inner {
+      justify-content: start !important;
+    }
+  }
+}
+
+ion-range {
+  background-color: var(--ion-background-color);
+
+  //noinspection ALL
+  ::ng-deep &.range-disabled .range-knob {
+    outline: none !important;
+  }
+
+  //noinspection ALL
+  &.range-disabled {
+    --knob-size: 0;
+  }
+}

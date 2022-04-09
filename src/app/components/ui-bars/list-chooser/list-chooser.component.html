@@ -1,0 +1,7 @@
+<ion-toolbar>
+  <ion-segment scrollable [value]="value" (ionChange)="typeChange.emit($event.detail.value)" mode="ios">
+    <ion-segment-button *ngFor="let list of lists" value="{{list}}" mode="ios">
+      <ion-label>{{list}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>

@@ -1,0 +1,20 @@
+<ion-list>
+  <ion-list-header *ngIf="header">{{header}}</ion-list-header>
+  <ng-container *ngIf="small">
+    <div class="button-grid ion-padding">
+      <ion-button *ngFor="let btn of actions" (click)="onAction(btn, $event)" size="small" fill="clear">
+        <ion-icon *ngIf="btn.icon" slot="icon-only" [name]="btn.icon.name"></ion-icon>
+      </ion-button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!small">
+    <ion-item *ngFor="let btn of actions" (click)="onAction(btn, $event)" button="true" lines="full">
+      <ion-icon *ngIf="btn.icon" slot="start" [name]="btn.icon.name"></ion-icon>
+      <ion-label>{{btn.title}}</ion-label>
+    </ion-item>
+  </ng-container>
+</ion-list>
+<ion-button *ngIf="cancel" expand="full" fill="clear" (click)="popoverService.closeCurrent()">
+  <ion-icon slot="start" name="close-sharp"></ion-icon>
+  <ion-label>Cancel</ion-label>
+</ion-button>

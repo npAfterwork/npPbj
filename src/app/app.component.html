@@ -1,0 +1,10 @@
+<ion-app (contextmenu)="noContextMenu($event)">
+  <ion-menu type="overlay" swipeGesture="false" contentId="main-content">
+    <pbj-sidemenu></pbj-sidemenu>
+  </ion-menu>
+  <ion-content id="main-content">
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+  <pbj-footer></pbj-footer>
+  <pbj-spinner></pbj-spinner>
+</ion-app>

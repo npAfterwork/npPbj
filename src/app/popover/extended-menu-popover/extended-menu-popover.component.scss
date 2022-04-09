@@ -1,0 +1,11 @@
+:host {
+  ion-list {
+    padding: 0;
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}

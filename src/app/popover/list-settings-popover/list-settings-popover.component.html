@@ -1,0 +1,13 @@
+<ion-label>Size</ion-label>
+<ion-segment [value]="size" [(ngModel)]="size">
+  <ion-segment-button *ngFor="let asize of ['small', 'medium', 'large']" [value]="asize">
+    <ion-label>{{asize}}</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ion-label>Mode</ion-label>
+<ion-segment [value]="panel" [(ngModel)]="panel" mode="ios">
+  <ion-segment-button *ngFor="let is of [true, false]" [value]="is">
+    <ion-label>{{is.toString()}}</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ion-button expand="full" (click)="popoverService.closeCurrent({size:size, panel:panel})" fill="clear">Okay</ion-button>

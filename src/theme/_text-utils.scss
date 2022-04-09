@@ -1,0 +1,70 @@
+@import "variables";
+@import "mixins";
+
+[pbj-text-secondary] {
+  color: var(--ion-color-step-650);
+}
+
+.pbj-text-item-type {
+  color: var(--ion-text-color);
+  font-size: $pbj-text-size-small;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+[text-album-name] {
+  display: block;
+  color: var(--ion-text-color);
+  font-size: $pbj-text-size-medium;
+}
+
+
+[text-upper] {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+}
+
+[text-ellipse] {
+  display: block;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}
+
+[text-headline], [text-item-name] {
+  color: var(--ion-color-step-650);
+  font-size: $pbj-text-size-medium;
+}
+
+[text-subline] {
+  color: var(--ion-text-color);
+  font-size: $pbj-text-size-normal;
+}
+
+[text-infoline] {
+  color: var(--ion-color-step-900);
+  font-size: $pbj-text-size-small;
+}
+
+
+.pbj-title-two-lines {
+  color: var(--pbj-text-color-title, var(--ion-color-step-650));
+  font-size: $pbj-text-size-title;
+  margin: 0;
+  @include line-clamp(2, $pbj-text-size-title, 1, 0);
+}
+
+.pbj-title-n-lines {
+  color: var(--pbj-text-color-title);
+  font-size: $pbj-text-size-title;
+  margin: $pbj-margin-small 0;
+}
+
+.pbj-subtitle {
+  color: var(--pbj-text-color-subtitle);
+  font-size: $pbj-text-size-subtitle;
+  text-transform: uppercase;
+}

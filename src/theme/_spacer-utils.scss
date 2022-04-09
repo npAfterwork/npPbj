@@ -1,0 +1,42 @@
+@import "variables";
+
+[pbj-padding-small] {
+  padding: $padding-small;
+}
+
+[pbj-padding] {
+  padding: $padding-normal;
+}
+
+[pbj-padding-bot] {
+  padding-bottom: $padding-normal;
+}
+
+[pbj-no-margin] {
+  margin: 0;
+}
+
+[pbj-margin] {
+  margin: $margin-normal;
+}
+
+[pbj-margin-small] {
+  margin: $margin-small;
+}
+
+[pbj-margin-top-bot] {
+  margin-top: $margin-normal;
+  margin-bottom: $margin-normal;
+}
+
+[pbj-margin-bot] {
+  margin-bottom: $margin-normal;
+}
+
+[pbj-margin-bot-small] {
+  margin-bottom: $margin-small;
+}
+
+[pbj-fullscreen] {
+  min-height: 100%;
+}

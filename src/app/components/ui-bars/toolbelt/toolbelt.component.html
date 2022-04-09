@@ -1,0 +1,20 @@
+<ion-toolbar [class.sticky]="isSticky">
+  <ng-container *ngIf="!custom">
+    <ion-buttons slot="start">
+      <pbj-selectionbar></pbj-selectionbar>
+      <ng-container *ngFor="let button of buttons_start">
+        <ion-button *ngIf="isEnabled(button.id)" (click)="button.onClick($event)" [color]="color(button.id)">
+          <ion-icon slot="icon-only" [name]="button.icon.name" size="small"></ion-icon>
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ng-container *ngFor="let button of buttons_end">
+        <ion-button *ngIf="isEnabled(button.id)" (click)="button.onClick($event)" [color]="color(button.id)" size="small">
+          <ion-icon slot="icon-only" [name]="button.icon.name" size="small"></ion-icon>
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+  </ng-container>
+  <ng-content></ng-content>
+</ion-toolbar>

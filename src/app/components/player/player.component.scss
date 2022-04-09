@@ -1,0 +1,26 @@
+:host {
+  ion-range {
+    padding: 10px 16px 0 16px;
+    --knob-size: 24px;
+    --height: 12px;
+    z-index: 11;
+
+    &.range-disabled {
+      --knob-size: 0;
+    }
+  }
+
+  .pbj-play-button {
+    min-width: 48px;
+  }
+
+  ion-badge {
+    --padding-top: 1px;
+    --padding-bottom: 1px;
+    --padding-start: 1px;
+    --padding-end: 1px;
+    font-size: 10px;
+    min-width: 12px;
+    border-radius: 50%;
+  }
+}

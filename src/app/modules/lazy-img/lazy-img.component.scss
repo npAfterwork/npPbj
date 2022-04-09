@@ -1,0 +1,23 @@
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: var(--pbj-list-item-image-fit, contain);
+  object-position: var(--pbj-list-item-image-pos, center);
+  border-radius: var(--pbj-list-item-image-border-radius, 0);
+}
+
+//img {
+//  width: 100%;
+//  height: var(--pbj-list-item-image-height, 100%);
+//}

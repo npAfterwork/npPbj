@@ -1,0 +1,16 @@
+@import "theme/variables";
+
+:host {
+  display: block;
+
+  ion-icon {
+    margin-right: .5rem;
+  }
+
+  ion-searchbar, ion-input {
+    padding: 0;
+    --color: var(--ion-text-color);
+    --icon-color: var(--ion-text-color);
+
+  }
+}

@@ -1,0 +1,7 @@
+@import "theme/variables";
+
+:host {
+  height: $pbj-footer-height;
+  max-height: $pbj-footer-height;
+  overflow: hidden;
+}

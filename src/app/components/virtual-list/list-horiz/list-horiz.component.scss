@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  height: 100%;
+  --pbj-list-item-base-size: 205px;
+  --pbj-list-item-height: 265px;
+  ion-slide {
+    width: 205px;
+    height: 265px;
+  }
+  .loading {
+    width: 205px;
+    height: 265px;
+    display: flex;
+    text-align: center;
+    align-items:  center;
+    justify-content: center;
+  }
+}

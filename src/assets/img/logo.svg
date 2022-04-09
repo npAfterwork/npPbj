@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 277 67" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+  <path d="M276.271,16.875c0,-9.038 -7.338,-16.375 -16.375,-16.375l-242.25,0c-9.038,0 -16.375,7.337 -16.375,16.375l0,32.75c0,9.038 7.337,16.375 16.375,16.375l242.25,0c9.037,0 16.375,-7.337 16.375,-16.375l0,-32.75Z" style="fill:#282828;"/>
+  <clipPath id="_clip1">
+    <path d="M276.271,16.875c0,-9.038 -7.338,-16.375 -16.375,-16.375l-242.25,0c-9.038,0 -16.375,7.337 -16.375,16.375l0,32.75c0,9.038 7.337,16.375 16.375,16.375l242.25,0c9.037,0 16.375,-7.337 16.375,-16.375l0,-32.75Z"/>
+  </clipPath>
+  <g clip-path="url(#_clip1)">
+    <text x="13.635px" y="47.56px" style="font-family:'GangofThree', 'Gang of Three',sans-serif;font-size:49px;fill:url(#_Radial2);">PB and Jam</text>
+  </g>
+  <path d="M276.271,16.875c0,-9.038 -7.338,-16.375 -16.375,-16.375l-242.25,0c-9.038,0 -16.375,7.337 -16.375,16.375l0,32.75c0,9.038 7.337,16.375 16.375,16.375l242.25,0c9.037,0 16.375,-7.337 16.375,-16.375l0,-32.75Z"
+        style="fill:none;stroke:#00e926;stroke-width:1px;"/>
+  <defs>
+    <radialGradient id="_Radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(98.2583,0,0,98.2583,120.779,33.25)">
+      <stop offset="0" style="stop-color:#4d4d4d;stop-opacity:1"/>
+      <stop offset="1"
+            style="stop-color:#00e926;stop-opacity:1"/>
+    </radialGradient>
+  </defs>
+</svg>

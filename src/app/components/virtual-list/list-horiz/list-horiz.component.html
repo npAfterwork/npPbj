@@ -1,0 +1,13 @@
+<ion-slides *ngIf="items else loading" pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let item of items">
+    <pbj-list-item-panel [items]="[item]" [size]="'large'" (select)="uiService.toggleSelect($event.item)"></pbj-list-item-panel>
+  </ion-slide>
+</ion-slides>
+    <!-- Add Scrollbar -->
+    <div class="swiper-scrollbar"></div>
+
+<ng-template #loading>
+  <div class="loading">
+    ...loading
+  </div>
+</ng-template>
