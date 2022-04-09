@@ -1,0 +1,208 @@
+$ionicons-font-path: "~ionicons/dist/fonts";
+
+// http://ionicframework.com/docs/theming/
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/padding.css";
+//@import "~@ionic/angular/css/float-elements.css";
+//@import "~@ionic/angular/css/text-alignment.css";
+//@import "~@ionic/angular/css/text-transformation.css";
+//@import "~@ionic/angular/css/flex-utils.css";
+//@import "~@ionic/angular/css/display.css"; // hmm is ionic not up to date or the docu?
+
+@import "theme/variables";
+@import "theme/mixins";
+@import "theme/theme";
+@import "theme/flex-utils";
+@import "theme/spacer-utils";
+@import "theme/text-utils";
+@import "theme/popover";
+@import "theme/ionic";
+
+h1 {
+  font-size: 36px;
+  font-weight: 100;
+}
+
+a {
+  text-decoration: none;
+}
+
+img:before {
+  content: "We're sorry, the image below is broken :(";
+  display: block;
+  margin-bottom: 10px;
+}
+
+img:after {
+  content: "(url: " attr(src) ")";
+  display: block;
+  font-size: 12px;
+}
+
+.ion-activatable {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+p.pbj-activatable {
+  @include ellipsed();
+  margin: 0;
+  padding: $padding-small 0;
+}
+
+//<editor-fold desc="*** Scrollbar (webkit only) ***">
+
+.inner-scroll {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--ion-color-step-150);
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--ion-color-step-150);
+}
+
+//</editor-fold>
+
+.pbj-card {
+  @extend .z-depth-1-half;
+  display: block;
+  position: relative;
+  background: var(--ion-background);
+  color: var(--ion-text-color);
+  font-family: var(--ion-font-family, inherit);
+  overflow: hidden;
+  //border-radius: 4px;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+//<editor-fold desc="*** Materialize depth classes ***">
+.z-depth-0 {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important
+}
+
+.z-depth-1 {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  margin-right: 2px;
+  margin-bottom: 2px;
+}
+
+.z-depth-1-half {
+  -webkit-box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.14), 1px 1px 7px 0 rgba(0, 0, 0, 0.12), 3px 3px 1px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.14), 1px 1px 7px 0 rgba(0, 0, 0, 0.12), 3px 3px 1px -1px rgba(0, 0, 0, 0.2);
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+.z-depth-2 {
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  margin-right: 4px;
+  margin-bottom: 5px;
+}
+
+.z-depth-3 {
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  margin-right: 8px;
+  margin-bottom: 17px;
+}
+
+.z-depth-4 {
+  -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  margin-right: 16px;
+  margin-bottom: 24px;
+}
+
+.z-depth-5 {
+  -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  margin-right: 24px;
+  margin-bottom: 38px;
+}
+
+
+//</editor-fold>
+// this is a shadow dom problem see web for directive on ion-content....
+[scrollX=true], [scrollx=true] {
+  //display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto !important;
+
+  &::-webkit-scrollbar {
+    //display: none;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--ion-color-step-150);
+  }
+}
+
+[scrollY=true], [scrolly=true] {
+  //display: flex;
+  flex-wrap: nowrap;
+  overflow-y: auto !important;
+
+  &::-webkit-scrollbar {
+    //display: none;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--ion-color-step-150);
+  }
+}
+
+i {
+  &::slotted([slot="icon-only"]) {
+    font-size: 1.8em;
+  }
+
+  &::slotted(*) {
+    font-size: 1.4em;
+    pointer-events: none;
+  }
+
+  &.icon-small {
+    font-size: 18px !important;
+  }
+
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  contain: strict;
+  fill: currentcolor;
+  box-sizing: content-box !important;
+}
+
+
+//.searchbar-input.sc-ion-searchbar-md {
+//  -webkit-padding-end: .5rem;
+//  padding-inline-end: .5rem;
+//}
+
+ion-list {
+  padding: 0;
+}
