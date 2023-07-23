@@ -21,7 +21,6 @@ export class SettingsService {
    */
   constructor(private storage: Storage) {
     console.log('SettingsService CREATE');
-    this.storage.create().catch(reason => console.error(reason));
   }
 
   /**
@@ -31,6 +30,7 @@ export class SettingsService {
    */
   async load(): Promise<void> {
     console.log('load settings');
+    await this.storage.create();
     const value = await this.storage.get(SETTINGS_KEY);
     if (value) {
       console.log('settings loaded', value);

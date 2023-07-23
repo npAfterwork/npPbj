@@ -1,36 +1,36 @@
-<form ngForm>
+<form [formGroup]="form">
   <ion-list>
     <ion-item lines="none">
       <ion-label>
         Login
       </ion-label>
     </ion-item>
-    <ion-item>
-      <ion-input (ionBlur)="onUserChanged()"
-                 label="{{ 'SETTINGS.SERVER.SERVER' | translate }}"
-                 labelPlacement="stacked"
-                 name="server" [(ngModel)]="auth.server" [placeholder]="'SETTINGS.SERVER.SERVER_PH' | translate"
-                 clearInput></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked"></ion-label>
-      <ion-input (ionBlur)="onUserChanged()"
-                 name="name"
-                 label="{{ 'SETTINGS.SERVER.USER' | translate }}"
-                 labelPlacement="stacked"
-                 [(ngModel)]="auth.username"
-                 [placeholder]="'SETTINGS.SERVER.USER_PH' | translate" clearInput></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-button fill="clear" size="small" class="btn-show-password" (click)="showHidePassword()"
-                  [style.color]="passwordIconColor">
-        <ion-icon slot="icon-only" name="eye-sharp"></ion-icon>
-      </ion-button>
-      <ion-input (ionBlur)="onUserChanged()" name="password"
-                 label="{{ 'SETTINGS.SERVER.PASSWORD' | translate }}"
-                 labelPlacement="stacked"
-                 [type]="passwordStyle" [(ngModel)]="auth.password"
-                 [placeholder]="'SETTINGS.SERVER.PASSWORD_PH' | translate"></ion-input>
-    </ion-item>
+    <ion-input
+      fill="solid"
+      label="{{ 'SETTINGS.SERVER.SERVER' | translate }}"
+      labelPlacement="stacked"
+      [formControl]="serverControl"
+      [placeholder]="'SETTINGS.SERVER.SERVER_PH' | translate"
+      (ionBlur)="onUserChanged()"
+    ></ion-input>
+    <ion-input
+      fill="solid"
+      label="{{ 'SETTINGS.SERVER.USER' | translate }}"
+      labelPlacement="stacked"
+      [formControl]="usernameControl"
+      [placeholder]="'SETTINGS.SERVER.USER_PH' | translate"
+      (ionBlur)="onUserChanged()"
+    ></ion-input>
+    <div flex-row>
+      <ion-input
+        fill="solid"
+        label="{{ 'SETTINGS.SERVER.PASSWORD' | translate }}"
+        labelPlacement="stacked"
+        [formControl]="passwordControl"
+        [type]="passwordStyle"
+        [placeholder]="'SETTINGS.SERVER.PASSWORD_PH' | translate"
+        (ionBlur)="onUserChanged()" name="password"
+      ></ion-input>
+    </div>
   </ion-list>
 </form>

@@ -2,7 +2,8 @@ import {CDEFAULT_USER} from '../../@core/defaults';
 import {Component, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {TranslateModule} from "@ngx-translate/core";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'pbj-auth-box',
@@ -11,23 +12,28 @@ import {FormsModule} from "@angular/forms";
   imports: [
     IonicModule,
     TranslateModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf
   ],
   styleUrls: ['./auth-settings-box.component.scss']
 })
 export class AuthSettingsBoxComponent implements OnInit {
   passwordStyle: 'password' | 'text' = 'password';
   passwordIconColor: 'gray' | '' = 'gray';
-  auth!: { server: string; password: string; session: any; username: string };
 
-  constructor() {
-  }
+  serverControl = new FormControl<string | null>(CDEFAULT_USER.server, Validators.required)
+  usernameControl = new FormControl<string | null>(CDEFAULT_USER.name, Validators.required)
+  passwordControl = new FormControl<string | null>(CDEFAULT_USER.password, Validators.required)
+
+  form = new FormGroup({
+    server: this.serverControl,
+    username: this.usernameControl,
+    password: this.passwordControl
+  })
 
   ngOnInit() {
     // this.auth = this.authService.auth || (this.authService.auth = {server:'', username:'', session: undefined, password: ''});
-    this.auth = {
-      server: CDEFAULT_USER.server, username: CDEFAULT_USER.name, session: undefined, password: CDEFAULT_USER.password
-    };
     console.log('INIT SETTINGS SERVWE');
   }
 

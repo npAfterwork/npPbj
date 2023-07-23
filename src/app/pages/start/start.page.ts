@@ -1,9 +1,9 @@
 import {AuthSettingsBoxComponent} from '../../components/auth-settings-box/auth-settings-box.component';
-import {TipOfTheDayService} from '../../services/ui/tip-of-the-day.service';
 import {Component, inject, OnInit, ViewChild} from '@angular/core';
-import {SettingsService} from "src/app/services/settings/settings.service";
 import {NavService} from "src/app/services/nav/nav.service";
 import {AuthService} from "src/app/services/auth/auth.service";
+import {TranslateService} from "@ngx-translate/core";
+import {TipOfTheDayService} from "src/app/services/tip-of-the-day/tip-of-the-day.service";
 
 @Component({
   selector: 'pbj-start',
@@ -12,13 +12,13 @@ import {AuthService} from "src/app/services/auth/auth.service";
 })
 export class StartPage implements OnInit {
   #authService = inject(AuthService);
+  #translate = inject(TranslateService);
   @ViewChild('server') server: AuthSettingsBoxComponent;
 
   loading = false;
 
   constructor(
     private readonly navService: NavService,
-    private readonly settings: SettingsService,
     public readonly tipOfTheDay: TipOfTheDayService
   ) {
   }
@@ -37,7 +37,6 @@ export class StartPage implements OnInit {
 
   async goOnline() {
     this.loading = true;
-    const auth = this.server.auth;
     console.log('get auth');
     await this.#authService.login('admin', 'admin');
     console.log('check was not successful => go settings',);

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 import {AppComponent} from './app.component';
@@ -12,10 +12,12 @@ import {IonicStorageModule} from "@ionic/storage-angular";
 import {Configuration} from "src/@jam/configuration";
 import {ApiModule} from "src/@jam/api.module";
 import {GraphQLModule} from "src/@graphql/graphql.module";
+import {TipOfTheDayService} from "src/app/services/tip-of-the-day/tip-of-the-day.service";
+import {StorageService} from "src/app/services/storage/storage.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
 }
 
 export function ConfigurationServiceFactory(): Configuration {
@@ -24,6 +26,7 @@ export function ConfigurationServiceFactory(): Configuration {
   })
 }
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
@@ -31,6 +34,7 @@ export function ConfigurationServiceFactory(): Configuration {
     HttpClientModule,
     TranslateModule.forRoot(
       {
+        defaultLanguage: 'en',
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
@@ -53,10 +57,21 @@ export function ConfigurationServiceFactory(): Configuration {
       ConfigurationServiceFactory,
     ),
     GraphQLModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
-    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [StorageService, TipOfTheDayService],
+      useFactory: (storage: StorageService, tipOfTheDay: TipOfTheDayService) =>
+        async () => {
+          await storage.initialize();
+          await tipOfTheDay.initialize();
+        }
+      ,
+    },
   ],
   bootstrap: [AppComponent],
 })
