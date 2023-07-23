@@ -1,0 +1,30 @@
+fragment AlbumDetail on AlbumQL {
+  albumType
+  artist {
+    id
+  }
+  name
+}
+
+query album($id: ID!){
+  album(id: $id)
+  {
+    name
+    id
+    artist {
+      name
+    }
+  }
+}
+query albums{
+  albums
+  {
+    items {
+      name
+      artist {
+        name
+      }
+    }
+    total
+  }
+}

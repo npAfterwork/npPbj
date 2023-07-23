@@ -1,38 +1,23 @@
-<ion-header>
-  <pbj-toolbar [text]="pageName" (add)="onAdd($event)"></pbj-toolbar>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
-<pbj-toolbelt></pbj-toolbelt>
-<ion-content class="">
-  <ng-container *ngFor="let box of boxes">
-    <ion-toolbar pbjPress (pressed)="toggleEditMode($event)">
-      <ion-buttons slot="end" [hidden]="!editMode">
-        <ion-button slot="end" fill="clear" size="small" (click)="onMoveBoxUp(box)">
-          <ion-icon name="arrow-up-sharp"></ion-icon>
-        </ion-button>
-        <ion-button slot="end" fill="clear" size="small" (click)="onMoveBoxDown(box)">
-          <ion-icon name="arrow-down-sharp"></ion-icon>
-        </ion-button>
-        <ion-button slot="end" fill="clear" size="small" (click)="onEditBox(box)">
-          <ion-icon name="create-sharp"></ion-icon>
-        </ion-button>
-        <ion-button slot="end" fill="clear" size="small" (click)="onRemoveBox(box)">
-          <ion-icon name="trash-sharp"></ion-icon>
-        </ion-button>
-        <ion-button slot="end" fill="clear" size="small" (click)="editMode = false">
-          <ion-icon name="close-sharp"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-button slot="end" fill="clear" size="small" (click)="update(box)" [hidden]="(box.boxtype === 'stats') || (box.listtype !== 'random')">
-        <ion-icon name="refresh-sharp"></ion-icon>
-      </ion-button>
-      <ion-label slot="start" class="ion-activatable pbj-subtitle" (click)="navigateToList($event, box)">
-        {{box.listtype}} • {{box.itemtype}}
-        <ion-ripple-effect></ion-ripple-effect>
-      </ion-label>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-    <pbj-dashboard-box [boxtype]="box.boxtype"
-                       [itemType]="box.itemtype" [listType]="box.listtype"
-                       [size]="box.size" [amount]="box.amount" [rows]="box.rows" [needsUpdate]="box.needsUpdate"
-    ></pbj-dashboard-box>
-  </ng-container>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <ion-button (click)="extracted()">do it again</ion-button>
+    <ion-button (click)="login()">login</ion-button>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI
+      Components</a></p>
+  </div>
 </ion-content>

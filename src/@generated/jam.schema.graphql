@@ -1,0 +1,1470 @@
+# Admin Change Queue Info
+type AdminChangeQueueInfoQL {
+  # Changes Completed Timestamp
+  done: Int!
+
+  # Error (if any)
+  error: String!
+
+  # Queue ID
+  id: ID!
+
+  # Waiting Position
+  position: Int!
+}
+
+# Admin Chat Maximum Age Settings
+type AdminSettingsChatMaxAgeQL {
+  # Unit of Maximum Age
+  unit: String!
+
+  # Value of Maximum Age
+  value: Int!
+}
+
+# Admin Chat Settings
+type AdminSettingsChatQL {
+  # Maximum Age of Chat Messages to keep
+  maxAge: AdminSettingsChatMaxAgeQL!
+
+  # Maximum Number of Chat Messages to keep
+  maxMessages: Int!
+}
+
+# Admin External Services Settings
+type AdminSettingsExternalQL {
+  # Enable External Services
+  enabled: Boolean!
+}
+
+# Admin Index Settings
+type AdminSettingsIndexQL {
+  # List of ignored Articles
+  ignoreArticles: [String!]!
+}
+
+# Admin Library Settings
+type AdminSettingsLibraryQL {
+  # Start Root Scanning on Server Start
+  scanAtStart: Boolean!
+}
+
+# Admin Settings
+type AdminSettingsQL {
+  chat: AdminSettingsChatQL!
+  externalServices: AdminSettingsExternalQL!
+  index: AdminSettingsIndexQL!
+  library: AdminSettingsLibraryQL!
+}
+
+input AlbumFilterArgsQL {
+  albumTypes: [AlbumType!]
+  artist: String
+  artistIDs: [ID!]
+  folderIDs: [ID!]
+  fromYear: Int
+  genreIDs: [ID!]
+  genres: [String!]
+  ids: [ID!]
+  mbArtistIDs: [String!]
+  mbReleaseIDs: [String!]
+  name: String
+  notMbArtistID: String
+  query: String
+  rootIDs: [ID!]
+  seriesIDs: [ID!]
+  since: Float
+  slug: String
+  toYear: Int
+  trackIDs: [ID!]
+}
+
+type AlbumIndexGroupQL {
+  items: [AlbumQL!]!
+  name: String!
+}
+
+type AlbumIndexQL {
+  groups: [AlbumIndexGroupQL!]!
+}
+
+input AlbumOrderArgsQL {
+  orderBy: AlbumOrderFields
+  orderDesc: Boolean
+}
+
+enum AlbumOrderFields {
+  albumType
+  artist
+  created
+  default
+  duration
+  name
+  seriesNr
+  updated
+  year
+}
+
+type AlbumPageQL {
+  items: [AlbumQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type AlbumQL {
+  albumType: AlbumType!
+  artist: ArtistQL!
+  createdAt: DateTime!
+  duration: Float
+  folders: [FolderQL!]!
+  foldersCount: Int!
+  genres: [GenreQL!]!
+  id: ID!
+  mbArtistID: String
+  mbReleaseID: String
+  name: String!
+  roots: [RootQL!]!
+  rootsCount: Int!
+  series: SeriesQL
+  seriesNr: String
+  slug: String!
+  state: StateQL!
+  tracks: [TrackQL!]!
+  tracksCount: Int!
+  updatedAt: DateTime!
+  year: Int
+}
+
+enum AlbumType {
+  album
+  audiobook
+  bootleg
+  compilation
+  ep
+  live
+  series
+  single
+  soundtrack
+  unknown
+}
+
+input ArtistFilterArgsQL {
+  albumIDs: [ID!]
+  albumTrackIDs: [ID!]
+  albumTypes: [AlbumType!]
+  folderIDs: [ID!]
+  genreIDs: [ID!]
+  genres: [String!]
+  ids: [ID!]
+  mbArtistIDs: [String!]
+  name: String
+  notMbArtistID: String
+  query: String
+  rootIDs: [ID!]
+  seriesIDs: [ID!]
+  since: Float
+  slug: String
+  trackIDs: [ID!]
+}
+
+type ArtistIndexGroupQL {
+  items: [ArtistQL!]!
+  name: String!
+}
+
+type ArtistIndexQL {
+  groups: [ArtistIndexGroupQL!]!
+}
+
+input ArtistOrderArgsQL {
+  orderBy: ArtistOrderFields
+  orderDesc: Boolean
+}
+
+enum ArtistOrderFields {
+  created
+  default
+  name
+  nameSort
+  updated
+}
+
+type ArtistPageQL {
+  items: [ArtistQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type ArtistQL {
+  albumTracks: [TrackQL!]!
+  albumTypes: [AlbumType!]!
+  albums: [AlbumQL!]!
+  albumsCount: Int!
+  albumsTracksCount: Int!
+  createdAt: DateTime!
+  folders: [FolderQL!]!
+  foldersCount: Int!
+  genres: [GenreQL!]!
+  genresCount: Int!
+  id: ID!
+  mbArtistID: String
+  name: String!
+  nameSort: String!
+  roots: [RootQL!]!
+  rootsCount: Int!
+  series: [SeriesQL!]!
+  seriesCount: Int!
+  slug: String!
+  state: StateQL!
+  tracks: [TrackQL!]!
+  tracksCount: Int!
+  updatedAt: DateTime!
+}
+
+input ArtworkFilterArgsQL {
+  childOfID: ID
+  folderIDs: [ID!]
+  formats: [String!]
+  heightFrom: Int
+  heightTo: Int
+  ids: [ID!]
+  name: String
+  query: String
+  since: Float
+  sizeFrom: Int
+  sizeTo: Int
+  types: [ArtworkImageType!]
+  widthFrom: Int
+  widthTo: Int
+}
+
+enum ArtworkImageType {
+  artist
+  back
+  booklet
+  front
+  liner
+  medium
+  obi
+  other
+  poster
+  raw
+  spine
+  sticker
+  track
+  tray
+  unedited
+  watermark
+}
+
+input ArtworkOrderArgsQL {
+  orderBy: DefaultOrderFields
+  orderDesc: Boolean
+}
+
+type ArtworkPageQL {
+  items: [ArtworkQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type ArtworkQL {
+  createdAt: DateTime!
+  fileSize: Int!
+
+  # Get the Navigation Index for Albums
+  folder: FolderQL!
+  format: String
+  height: Int
+  id: ID!
+  name: String!
+  path: String!
+  statCreated: DateTime!
+  statModified: DateTime!
+  types: [ArtworkImageType!]!
+  updatedAt: DateTime!
+  width: Int
+}
+
+enum AudioFormatType {
+  flac
+  flv
+  m4a
+  mp3
+  mp4
+  oga
+  ogg
+  wav
+  webma
+}
+
+input BookmarkFilterArgsQL {
+  comment: String
+  episodeIDs: [ID!]
+  ids: [ID!]
+  query: String
+  since: Float
+  trackIDs: [ID!]
+  userIDs: [ID!]
+}
+
+input BookmarkOrderArgsQL {
+  orderBy: BookmarkOrderFields
+  orderDesc: Boolean
+}
+
+enum BookmarkOrderFields {
+  created
+  default
+  media
+  position
+  updated
+}
+
+type BookmarkPageQL {
+  items: [BookmarkQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type BookmarkQL {
+  comment: String
+  createdAt: DateTime!
+  episode: EpisodeQL
+  id: ID!
+  position: Float!
+  track: TrackQL
+  updatedAt: DateTime!
+}
+
+type ChatQL {
+  created: DateTime!
+  message: String!
+  userID: ID!
+  userName: String!
+}
+
+# The javascript `Date` as string. Type represents date and time as the ISO Date string.
+scalar DateTime
+
+enum DefaultOrderFields {
+  created
+  default
+  name
+  updated
+}
+
+type EpisodeChapterQL {
+  start: Float!
+  title: String!
+}
+
+type EpisodeEnclosureQL {
+  length: Float
+  type: String
+  url: String!
+}
+
+input EpisodeFilterArgsQL {
+  authors: [String!]
+  guids: [String!]
+  ids: [ID!]
+  name: String
+  podcastIDs: [ID!]
+  query: String
+  since: Float
+  statuses: [PodcastStatus!]
+}
+
+input EpisodeOrderArgsQL {
+  orderBy: EpisodeOrderFields
+  orderDesc: Boolean
+}
+
+enum EpisodeOrderFields {
+  created
+  date
+  default
+  name
+  status
+  updated
+}
+
+type EpisodePageQL {
+  items: [EpisodeQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type EpisodeQL {
+  author: String
+  bookmarks: [BookmarkQL!]!
+  bookmarksCount: Int!
+  chapters: [EpisodeChapterQL!]
+  createdAt: DateTime!
+  date: DateTime!
+  duration: Float
+  enclosures: [EpisodeEnclosureQL!]
+  error: String
+  fileCreated: DateTime
+  fileModified: DateTime
+  fileSize: Int
+  guid: String
+  id: ID!
+  link: String
+  name: String!
+  path: String
+  podcast: PodcastQL!
+  state: StateQL!
+  status: PodcastStatus!
+  summary: String
+  tag: TagQL
+  updatedAt: DateTime!
+  waveform: WaveformQL!
+}
+
+type ExtendedInfoQL {
+  description: String!
+  license: String!
+  licenseUrl: String!
+  source: String!
+  url: String!
+}
+
+type ExtendedInfoResultQL {
+  info: ExtendedInfoQL
+}
+
+input FolderFilterArgsQL {
+  album: String
+  albumIDs: [ID!]
+  albumTypes: [AlbumType!]
+  artist: String
+  artistIDs: [ID!]
+  artistSort: String
+  artworksIDs: [ID!]
+  childOfID: ID
+  folderTypes: [FolderType!]
+  fromYear: Int
+  genreIDs: [ID!]
+  genres: [String!]
+  ids: [ID!]
+  level: Int
+  mbAlbumTypes: [String!]
+  mbArtistIDs: [String!]
+  mbReleaseGroupIDs: [String!]
+  mbReleaseIDs: [String!]
+  name: String
+  parentIDs: [ID!]
+  query: String
+  rootIDs: [ID!]
+  seriesIDs: [ID!]
+  since: Float
+  title: String
+  toYear: Int
+  trackIDs: [ID!]
+}
+
+type FolderIndexGroupQL {
+  items: [FolderQL!]!
+  name: String!
+}
+
+type FolderIndexQL {
+  groups: [FolderIndexGroupQL!]!
+}
+
+input FolderOrderArgsQL {
+  orderBy: FolderOrderFields
+  orderDesc: Boolean
+}
+
+enum FolderOrderFields {
+  created
+  default
+  level
+  name
+  title
+  updated
+  year
+}
+
+type FolderPageQL {
+  items: [FolderQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type FolderQL {
+  album: String
+  albumTrackCount: Int
+  albumType: AlbumType
+  albums: [AlbumQL!]
+  albumsCount: Int!
+  artist: String
+  artistSort: String
+  artists: [ArtistQL!]
+  artistsCount: Int!
+  artworks: [ArtworkQL!]
+  artworksCount: Int!
+  children: [FolderQL!]!
+  childrenCount: Int!
+  createdAt: DateTime!
+  folderType: FolderType!
+  genres: [GenreQL!]!
+  genresCount: Int!
+  id: ID!
+  level: Int!
+  mbAlbumType: String
+  mbArtistID: String
+  mbReleaseGroupID: String
+  mbReleaseID: String
+  name: String!
+  parent: FolderQL
+  path: String!
+  root: RootQL!
+  rootsCount: Int!
+  series: [SeriesQL!]
+  seriesCount: Int!
+  statCreated: DateTime!
+  statModified: DateTime!
+  state: StateQL!
+  title: String!
+  tracks: [TrackQL!]
+  tracksCount: Int!
+  updatedAt: DateTime!
+  year: Int
+}
+
+enum FolderType {
+  album
+  artist
+  collection
+  extras
+  multialbum
+  unknown
+}
+
+input GenreFilterArgsQL {
+  ids: [ID!]
+  name: String
+  query: String
+  since: Float
+  trackIDs: [ID!]
+}
+
+type GenreIndexGroupQL {
+  items: [GenreQL!]!
+  name: String!
+}
+
+type GenreIndexQL {
+  groups: [GenreIndexGroupQL!]!
+}
+
+input GenreOrderArgsQL {
+  orderBy: GenreOrderFields
+  orderDesc: Boolean
+}
+
+enum GenreOrderFields {
+  created
+  default
+  name
+  updated
+}
+
+type GenrePageQL {
+  items: [GenreQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type GenreQL {
+  albumCount: Int!
+  albums(filter: AlbumFilterArgsQL, order: [AlbumOrderArgsQL!], page: PageArgsQL): AlbumPageQL!
+  artistCount: Int!
+  artists(filter: ArtistFilterArgsQL, order: [ArtistOrderArgsQL!], page: PageArgsQL): ArtistPageQL!
+  createdAt: DateTime!
+  folderCount: Int!
+  folders: [FolderQL!]!
+  id: ID!
+  name: String!
+  series: [SeriesQL!]!
+  trackCount: Int!
+  tracks(filter: TrackFilterArgsQL, order: [TrackOrderArgsQL!], page: PageArgsQL): TrackPageQL!
+  updatedAt: DateTime!
+}
+
+# The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+scalar JSON
+
+# Type of List Request
+enum ListType {
+  avghighest
+  faved
+  frequent
+  highest
+  random
+  recent
+}
+
+type MediaTagRawQL {
+  frames: JSON!
+  version: String!
+}
+
+type Mutation {
+  fav(id: ID!, remove: Boolean): StateQL!
+  rate(id: ID!, rating: Int!): StateQL!
+  scrobble(id: ID!): NowPlayingQL!
+}
+
+type NowPlayingQL {
+  episode: EpisodeQL
+  time: Float!
+  track: TrackQL
+  userID: ID!
+  userName: String!
+}
+
+input PageArgsQL {
+  # return items starting from offset position
+  skip: Int = 0
+
+  # amount of returned items
+  take: Int
+}
+
+type PlayQueueEntryQL {
+  createdAt: DateTime!
+  episode: EpisodeQL
+  id: ID!
+  playQueue: PlayQueueQL!
+  position: Int!
+  track: TrackQL
+  updatedAt: DateTime!
+}
+
+type PlayQueueQL {
+  changedBy: String!
+  createdAt: DateTime!
+  current: Int
+  duration: Float
+  entries: [PlayQueueEntryQL!]!
+  entriesCount: Int!
+  id: ID!
+  position: Float
+  updatedAt: DateTime!
+}
+
+type PlaylistEntryQL {
+  createdAt: DateTime!
+  episode: EpisodeQL
+  id: ID!
+  playlist: PlaylistQL!
+  position: Float!
+  track: TrackQL
+  updatedAt: DateTime!
+}
+
+input PlaylistFilterArgsQL {
+  comment: String
+  durationFrom: Float
+  durationTo: Float
+  ids: [ID!]
+  isPublic: Boolean
+  name: String
+  query: String
+  since: Float
+  userIDs: [ID!]
+}
+
+type PlaylistIndexGroupQL {
+  items: [PlaylistQL!]!
+  name: String!
+}
+
+type PlaylistIndexQL {
+  groups: [PlaylistIndexGroupQL!]!
+}
+
+input PlaylistOrderArgsQL {
+  orderBy: DefaultOrderFields
+  orderDesc: Boolean
+}
+
+type PlaylistPageQL {
+  items: [PlaylistQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type PlaylistQL {
+  comment: String
+  createdAt: DateTime!
+  duration: Float!
+  entries: [PlaylistEntryQL!]!
+  entriesCount: Int!
+  id: ID!
+  isPublic: Boolean!
+  name: String!
+  state: StateQL!
+  updatedAt: DateTime!
+  userID: ID!
+  userName: String!
+}
+
+type PodcastDiscoverPageQL {
+  items: [PodcastDiscoverQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type PodcastDiscoverQL {
+  author: String!
+  description: String!
+  logo_url: String!
+  mygpo_link: String!
+  scaled_logo_url: String!
+  subscribers: Float!
+  subscribers_last_week: Float!
+  title: String!
+  url: String!
+  website: String!
+}
+
+type PodcastDiscoverTagPageQL {
+  items: [PodcastDiscoverTagQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type PodcastDiscoverTagQL {
+  tag: String!
+  title: String!
+  usage: Float!
+}
+
+input PodcastFilterArgsQL {
+  author: String
+  categories: [String!]
+  description: String
+  episodeIDs: [ID!]
+  generator: String
+  ids: [ID!]
+  lastCheckFrom: Float
+  lastCheckTo: Float
+  name: String
+  query: String
+  since: Float
+  statuses: [PodcastStatus!]
+  title: String
+  url: String
+}
+
+type PodcastIndexGroupQL {
+  items: [PodcastQL!]!
+  name: String!
+}
+
+type PodcastIndexQL {
+  groups: [PodcastIndexGroupQL!]!
+}
+
+input PodcastOrderArgsQL {
+  orderBy: PodcastOrderFields
+  orderDesc: Boolean
+}
+
+enum PodcastOrderFields {
+  created
+  default
+  lastCheck
+  name
+  updated
+}
+
+type PodcastPageQL {
+  items: [PodcastQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type PodcastQL {
+  author: String
+  categories: [String!]!
+  createdAt: DateTime!
+  description: String
+  episodes: [EpisodeQL!]!
+  episodesCount: Int!
+  errorMessage: String
+  generator: String
+  id: ID!
+  image: String
+  language: String
+  lastCheck: DateTime!
+  link: String
+  name: String!
+  state: StateQL!
+  status: PodcastStatus!
+  title: String
+  updatedAt: DateTime!
+  url: String!
+}
+
+enum PodcastStatus {
+  completed
+  deleted
+  downloading
+  error
+  new
+}
+
+type Query {
+  # Get Queue Information for Admin Change Tasks
+  adminQueue(
+    # Queue Task Id
+    id: ID!
+  ): AdminChangeQueueInfoQL!
+
+  # Get the Server Admin Settings
+  adminSettings: AdminSettingsQL!
+
+  # Get an Album by Id
+  album(id: ID!): AlbumQL!
+
+  # Get the Navigation Index for Albums
+  albumIndex(filter: AlbumFilterArgsQL): AlbumIndexQL!
+
+  # Get Extended Info for Album by Id
+  albumInfo(id: ID!): ExtendedInfoResultQL!
+
+  # Search albums
+  albums(filter: AlbumFilterArgsQL, list: ListType, order: [AlbumOrderArgsQL!], page: PageArgsQL, seed: String): AlbumPageQL!
+
+  # Get an Artist by Id
+  artist(id: ID!): ArtistQL!
+
+  # Get the Navigation Index for Albums
+  artistIndex(filter: ArtistFilterArgsQL): ArtistIndexQL!
+
+  # Get Extended Info for Artist by Id
+  artistInfo(id: ID!): ExtendedInfoResultQL!
+
+  # Search Artists
+  artists(filter: ArtistFilterArgsQL, list: ListType, order: [ArtistOrderArgsQL!], page: PageArgsQL, seed: String): ArtistPageQL!
+
+  # Get an Artwork by Id
+  artwork(id: ID!): ArtworkQL!
+
+  # Search Artworks
+  artworks(filter: ArtworkFilterArgsQL, list: ListType, order: [ArtworkOrderArgsQL!], page: PageArgsQL, seed: String): ArtworkPageQL!
+
+  # Get a Bookmark by Id
+  bookmark(id: ID!): BookmarkQL!
+
+  # Search Bookmarks
+  bookmarks(filter: BookmarkFilterArgsQL, order: [BookmarkOrderArgsQL!], page: PageArgsQL): BookmarkPageQL!
+
+  # Get Chat Messages
+  chats(since: Float): [ChatQL!]!
+  currentUser: UserQL!
+
+  # Get a Episode by Id
+  episode(id: ID!): EpisodeQL!
+
+  # Search Episodes
+  episodes(filter: EpisodeFilterArgsQL, list: ListType, order: [EpisodeOrderArgsQL!], page: PageArgsQL, seed: String): EpisodePageQL!
+
+  # Get a Folder by Id
+  folder(id: ID!): FolderQL!
+
+  # Get the Navigation Index for Folders
+  folderIndex(filter: FolderFilterArgsQL): FolderIndexQL!
+
+  # Get Extended Info for Folder by Id
+  folderInfo(id: ID!): ExtendedInfoResultQL!
+
+  # Search Folders
+  folders(filter: FolderFilterArgsQL, list: ListType, order: [FolderOrderArgsQL!], page: PageArgsQL, seed: String): FolderPageQL!
+
+  # Get an Genre by Id
+  genre(id: ID!): GenreQL!
+
+  # Get the Navigation Index for Genres
+  genreIndex(filter: GenreFilterArgsQL): GenreIndexQL!
+
+  # Search Genres
+  genres(filter: GenreFilterArgsQL, list: ListType, order: [GenreOrderArgsQL!], page: PageArgsQL, seed: String): GenrePageQL!
+
+  # Get a List of media [Track, Episode] played currently by Users
+  nowPlaying: [NowPlayingQL!]!
+
+  # Get a PlayQueue for the calling user
+  playQueue: PlayQueueQL!
+
+  # Get a Playlist by Id
+  playlist(id: ID!): PlaylistQL!
+
+  # Get the Navigation Index for Playlists
+  playlistIndex(filter: PlaylistFilterArgsQL): PlaylistIndexQL!
+
+  # Search Playlists
+  playlists(filter: PlaylistFilterArgsQL, list: ListType, order: [PlaylistOrderArgsQL!], page: PageArgsQL, seed: String): PlaylistPageQL!
+
+  # Get a Podcast by Id
+  podcast(id: ID!): PodcastQL!
+
+  # Get the Navigation Index for Podcasts
+  podcastIndex(filter: PodcastFilterArgsQL): PodcastIndexQL!
+
+  # Search Podcasts
+  podcasts(filter: PodcastFilterArgsQL, list: ListType, order: [PodcastOrderArgsQL!], page: PageArgsQL, seed: String): PodcastPageQL!
+
+  # Discover Podcasts via gpodder.net
+  podcastsDiscover(query: String!): [PodcastDiscoverQL!]!
+
+  # Discover Podcasts by Tag via gpodder.net
+  podcastsDiscoverByTag(
+    # return items starting from offset position
+    skip: Int = 0
+    tag: String!
+
+    # amount of returned items
+    take: Int
+  ): PodcastDiscoverPageQL!
+
+  # Discover Podcast Tags via gpodder.net
+  podcastsDiscoverTags(
+    # return items starting from offset position
+    skip: Int = 0
+
+    # amount of returned items
+    take: Int
+  ): PodcastDiscoverTagPageQL!
+
+  # Discover Top Podcasts via gpodder.net
+  podcastsDiscoverTop(
+    # return items starting from offset position
+    skip: Int = 0
+
+    # amount of returned items
+    take: Int
+  ): PodcastDiscoverPageQL!
+
+  # Get a Radio by Id
+  radio(id: ID!): RadioQL!
+
+  # Get the Navigation Index for Radios
+  radioIndex(filter: RadioFilterArgsQL): RadioIndexQL!
+
+  # Search Radios
+  radios(filter: RadioFilterArgsQL, list: ListType, order: [RadioOrderArgsQL!], page: PageArgsQL, seed: String): RadioPageQL!
+
+  # Get a Root by Id
+  root(id: ID!): RootQL!
+
+  # Search Roots
+  roots(filter: RootFilterArgsQL, list: ListType, order: [RootOrderArgsQL!], page: PageArgsQL, seed: String): RootPageQL!
+
+  # Get a Series by Id
+  series(id: ID!): SeriesQL!
+
+  # Get the Navigation Index for Series
+  seriesIndex(filter: SeriesFilterArgsQL): SeriesIndexQL!
+
+  # Get Extended Info for Series by Id
+  seriesInfo(id: ID!): ExtendedInfoResultQL!
+
+  # Search Series
+  serieses(filter: SeriesFilterArgsQL, list: ListType, order: [SeriesOrderArgsQL!], page: PageArgsQL, seed: String): SeriesPageQL!
+
+  # Check the Login State
+  session: SessionQL!
+
+  # Get a list of all sessions of the current user
+  sessions(filter: SessionFilterArgsQL, order: [SessionOrderArgsQL!], page: PageArgsQL): SessionPageQL!
+
+  # Get User State (fav/rate/etc) for Base Objects
+  state(
+    # Object Id
+    id: ID!
+  ): StateQL!
+  stats(rootID: ID): StatsQL!
+  track(id: ID!): TrackQL!
+  tracks(filter: TrackFilterArgsQL, list: ListType, order: [TrackOrderArgsQL!], page: PageArgsQL, seed: String): TrackPageQL!
+  user(id: ID!): UserQL!
+  userIndex(filter: UserFilterArgsQL): UserIndexQL!
+  users(filter: UserFilterArgsQL, order: [UserOrderArgsQL!], page: PageArgsQL): UserPageQL!
+
+  # Get the API Version
+  version: String!
+  waveform(id: ID!): WaveformQL!
+}
+
+input RadioFilterArgsQL {
+  disabled: Boolean
+  homepage: String
+  ids: [ID!]
+  name: String
+  query: String
+  since: Int
+  url: String
+}
+
+type RadioIndexGroupQL {
+  items: [RadioQL!]!
+  name: String!
+}
+
+type RadioIndexQL {
+  groups: [RadioIndexGroupQL!]!
+}
+
+input RadioOrderArgsQL {
+  orderBy: DefaultOrderFields
+  orderDesc: Boolean
+}
+
+type RadioPageQL {
+  items: [RadioQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type RadioQL {
+  createdAt: DateTime!
+  disabled: Boolean!
+  homepage: String
+  id: ID!
+  name: String!
+  state: StateQL!
+  updatedAt: DateTime!
+  url: String!
+}
+
+input RootFilterArgsQL {
+  albumIDs: [ID!]
+  artistIDs: [ID!]
+  folderIDs: [ID!]
+  ids: [ID!]
+  name: String
+  query: String
+  seriesIDs: [ID!]
+  since: Float
+  strategies: [RootScanStrategy!]!
+  trackIDs: [ID!]
+}
+
+input RootOrderArgsQL {
+  orderBy: DefaultOrderFields
+  orderDesc: Boolean
+}
+
+type RootPageQL {
+  items: [RootQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type RootQL {
+  albums: [AlbumQL!]!
+  artists: [ArtistQL!]!
+  createdAt: DateTime!
+  folders: [FolderQL!]!
+  id: ID!
+  name: String!
+  path: String!
+  series: [SeriesQL!]!
+  status: RootStatusQL!
+  strategy: RootScanStrategy!
+  tracks: [TrackQL!]!
+  updatedAt: DateTime!
+}
+
+enum RootScanStrategy {
+  artistalbum
+  audiobook
+  auto
+  compilation
+}
+
+type RootStatusQL {
+  error: String
+  lastScan: DateTime
+  scanning: Boolean
+}
+
+input SeriesFilterArgsQL {
+  albumIDs: [ID!]
+  albumTypes: [AlbumType!]
+  artistIDs: [ID!]
+  folderIDs: [ID!]
+  genreIDs: [ID!]
+  ids: [ID!]
+  name: String
+  query: String
+  rootIDs: [ID!]
+  since: Float
+  trackIDs: [ID!]
+}
+
+type SeriesIndexGroupQL {
+  items: [SeriesQL!]!
+  name: String!
+}
+
+type SeriesIndexQL {
+  groups: [SeriesIndexGroupQL!]!
+}
+
+input SeriesOrderArgsQL {
+  orderBy: DefaultOrderFields
+  orderDesc: Boolean
+}
+
+type SeriesPageQL {
+  items: [SeriesQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type SeriesQL {
+  albumTypes: [AlbumType!]!
+  albums: [AlbumQL!]!
+  albumsCount: Int!
+  artist: ArtistQL
+  createdAt: DateTime!
+  folders: [FolderQL!]!
+  foldersCount: Int!
+  genres: [GenreQL!]!
+  genresCount: Int!
+  id: ID!
+  name: String!
+  roots: [RootQL!]!
+  rootsCount: Int!
+  state: StateQL!
+  tracks: [TrackQL!]!
+  tracksCount: Int!
+  updatedAt: DateTime!
+}
+
+input SessionFilterArgsQL {
+  agent: String
+  client: String
+  expiresFrom: Float
+  expiresTo: Float
+  ids: [ID!]
+  mode: SessionMode
+  since: Float
+  userIDs: [ID!]
+}
+
+enum SessionMode {
+  browser
+  jwt
+}
+
+input SessionOrderArgsQL {
+  orderBy: SessionOrderFields
+  orderDesc: Boolean
+}
+
+enum SessionOrderFields {
+  default
+  expires
+}
+
+type SessionPageQL {
+  items: [SessionQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type SessionQL {
+  agent: String!
+  client: String!
+  createdAt: DateTime!
+  expires: DateTime!
+  id: ID!
+  mode: SessionMode!
+  updatedAt: DateTime!
+}
+
+type StateQL {
+  createdAt: DateTime!
+  faved: DateTime
+  id: ID!
+  lastPlayed: DateTime
+  played: Int
+  rated: Int
+  updatedAt: DateTime!
+}
+
+type StatsAlbumTypesQL {
+  album: Int!
+  artistCompilation: Int!
+  audiobook: Int!
+  bootleg: Int!
+  compilation: Int!
+  ep: Int!
+  live: Int!
+  series: Int!
+  single: Int!
+  soundtrack: Int!
+  unknown: Int!
+}
+
+type StatsQL {
+  album: Int!
+  albumTypes: StatsAlbumTypesQL!
+  artist: Int!
+  artistTypes: StatsAlbumTypesQL!
+  folder: Int!
+  rootID: ID
+  series: Int!
+  track: Int!
+}
+
+type TagChapterQL {
+  end: Float!
+  start: Float!
+  title: String!
+}
+
+enum TagFormatType {
+  ffmpeg
+  id3v1
+  id3v20
+  id3v21
+  id3v22
+  id3v23
+  id3v24
+  none
+  vorbis
+}
+
+type TagQL {
+  album: String
+  albumArtist: String
+  albumArtistSort: String
+  albumSort: String
+  artist: String
+  artistSort: String
+  chapters: [TagChapterQL!]
+  createdAt: DateTime!
+  disc: Int
+  discTotal: Int
+  format: TagFormatType!
+  genres: [String!]
+  id: ID!
+  lyrics: String
+  mbAlbumArtistID: String
+  mbAlbumStatus: String
+  mbAlbumType: String
+  mbArtistID: String
+  mbRecordingID: String
+  mbReleaseCountry: String
+  mbReleaseGroupID: String
+  mbReleaseID: String
+  mbReleaseTrackID: String
+  mbTrackID: String
+  mediaBitRate: Float
+  mediaChannels: Int
+  mediaDuration: Float
+  mediaEncoded: String
+  mediaFormat: AudioFormatType
+  mediaMode: String
+  mediaSampleRate: Float
+  mediaVersion: String
+  nrTagImages: Int
+  series: String
+  seriesNr: String
+  title: String
+  titleSort: String
+  trackNr: Int
+  trackTotal: Int
+  updatedAt: DateTime!
+  year: Int
+}
+
+input TrackFilterArgsQL {
+  album: String
+  albumArtistIDs: [ID!]
+  albumIDs: [ID!]
+  artist: String
+  artistIDs: [ID!]
+  bookmarkIDs: [ID!]
+  childOfID: ID
+  folderIDs: [ID!]
+  fromYear: Int
+  genreIDs: [ID!]
+  genres: [String!]
+  ids: [ID!]
+  name: String
+  query: String
+  rootIDs: [ID!]
+  seriesIDs: [ID!]
+  since: Float
+  toYear: Int
+}
+
+type TrackLyricsQL {
+  lyrics: String
+  source: String
+}
+
+input TrackOrderArgsQL {
+  orderBy: TrackOrderFields
+  orderDesc: Boolean
+}
+
+enum TrackOrderFields {
+  album
+  created
+  default
+  discNr
+  filename
+  parent
+  seriesNr
+  title
+  trackNr
+  updated
+}
+
+type TrackPageQL {
+  items: [TrackQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type TrackQL {
+  album: AlbumQL
+  albumArtist: ArtistQL
+  artist: ArtistQL
+  bookmarks: [BookmarkQL!]!
+  bookmarksCount: Int!
+  createdAt: DateTime!
+  fileCreated: DateTime!
+  fileModified: DateTime!
+  fileName: String!
+  fileSize: Float!
+  folder: FolderQL!
+  genres: [GenreQL!]!
+  id: ID!
+  lyrics: TrackLyricsQL!
+  name: String!
+  path: String!
+  rawTag: MediaTagRawQL!
+  root: RootQL!
+  series: SeriesQL
+  state: StateQL!
+  tag: TagQL
+  updatedAt: DateTime!
+  waveform: WaveformQL!
+}
+
+type UserDetailStatsQL {
+  album: Int!
+  albumTypes: StatsAlbumTypesQL!
+  artist: Int!
+  artistTypes: StatsAlbumTypesQL!
+  folder: Int!
+  series: Int!
+  track: Int!
+}
+
+type UserFavoritesQL {
+  albums(filter: AlbumFilterArgsQL, order: [AlbumOrderArgsQL!], page: PageArgsQL): AlbumPageQL!
+  artists(filter: ArtistFilterArgsQL, order: [ArtistOrderArgsQL!], page: PageArgsQL): ArtistPageQL!
+  artworks(filter: ArtworkFilterArgsQL, order: [ArtworkOrderArgsQL!], page: PageArgsQL): ArtistPageQL!
+  episodes(filter: EpisodeFilterArgsQL, order: [EpisodeOrderArgsQL!], page: PageArgsQL): EpisodePageQL!
+  folders(filter: FolderFilterArgsQL, order: [FolderOrderArgsQL!], page: PageArgsQL): FolderPageQL!
+  playlists(filter: PlaylistFilterArgsQL, order: [PlaylistOrderArgsQL!], page: PageArgsQL): PlaylistPageQL!
+  podcasts(filter: PodcastFilterArgsQL, order: [PodcastOrderArgsQL!], page: PageArgsQL): PodcastPageQL!
+  series(filter: SeriesFilterArgsQL, order: [SeriesOrderArgsQL!], page: PageArgsQL): SeriesPageQL!
+  tracks(filter: TrackFilterArgsQL, order: [TrackOrderArgsQL!], page: PageArgsQL): TrackPageQL!
+}
+
+input UserFilterArgsQL {
+  email: String
+  ids: [ID!]
+  name: String
+  query: String
+  roles: [UserRole!]
+  since: Float
+}
+
+type UserIndexGroupQL {
+  items: [UserQL!]!
+  name: String!
+}
+
+type UserIndexQL {
+  groups: [UserIndexGroupQL!]!
+}
+
+input UserOrderArgsQL {
+  orderBy: DefaultOrderFields
+  orderDesc: Boolean
+}
+
+type UserPageQL {
+  items: [UserQL!]!
+  skip: Int
+  take: Int
+  total: Int!
+}
+
+type UserQL {
+  bookmarks(filter: BookmarkFilterArgsQL, order: [BookmarkOrderArgsQL!], page: PageArgsQL): BookmarkPageQL!
+  createdAt: DateTime!
+  email: String!
+  favorites: UserFavoritesQL!
+  id: ID!
+  maxBitRate: Int
+  name: String!
+  playQueue: PlayQueueQL
+  playlists(filter: PlaylistFilterArgsQL, order: [PlaylistOrderArgsQL!], page: PageArgsQL): PlaylistPageQL!
+  roles: [UserRole!]!
+  sessions(filter: SessionFilterArgsQL, order: [SessionOrderArgsQL!], page: PageArgsQL): SessionPageQL!
+  stats: UserStatsQL!
+  updatedAt: DateTime!
+}
+
+# User Roles
+enum UserRole {
+  admin
+  podcast
+  stream
+  upload
+}
+
+type UserStatsQL {
+  bookmark: Int!
+  favorite: UserDetailStatsQL!
+  played: UserDetailStatsQL!
+  playlist: Int!
+}
+
+type WaveformQL {
+  json: String
+  svg(width: Int!): String
+}

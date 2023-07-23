@@ -1,4 +1,3 @@
-import {ComponentsModule} from '../../components/components.module';
 import {StartPage} from './start.page';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
@@ -7,23 +6,25 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {IonicModule} from '@ionic/angular';
 import {TranslateModule} from '@ngx-translate/core';
+import {AuthSettingsBoxComponent} from "../../components/auth-settings-box/auth-settings-box.component";
 
 const routes: Routes = [
   {
-    path:      '',
+    path: '',
     component: StartPage
   }
 ];
 
 @NgModule({
-  imports:      [
+  imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
     TranslateModule,
-    ComponentsModule
+    AuthSettingsBoxComponent,
   ],
   declarations: [StartPage]
 })
-export class StartPageModule {}
+export class StartPageModule {
+}

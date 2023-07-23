@@ -1,0 +1,18 @@
+overwrite: true
+schema:
+  - "http://localhost:4040/graphql":
+      headers:
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5OTYzNTczLTI3ZGMtNDIyMy1iYzkyLTE5ZmYxMzI5YzAyZSIsImNsaWVudCI6Im5wUGJqYW0iLCJpYXQiOjE2NDk4NjMyMTR9.aF1RFbHfp-jvOF4m-2ty2LbLmE2MiYPKZxVfmar__g4
+      assumeValid: true
+generates:
+  src/@generated/jam.schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      commentDescriptions: true
+  src/@generated/jam-fragment-matcher.ts:
+    plugins:
+      - fragment-matcher
+    config:
+      apolloClientVersion: 3
+

@@ -1,48 +1,45 @@
 Pbj - Peanutbutter and JamServe
 ====
 
-Ionic client for the audio library server jamserve
-
-https://github.com/ffalt/jamserve
-
-Needs some work or a running jamserve@0.1.0 (ouch :/)
-
-Current Jamserve version is v0.5.8 .........
-
+Ionic client for the awesome [jamserve](https://github.com/ffalt/jamserve)
 
 Changelog
 ----
+
+* v 1.0.0
+  * Let's start over :D (graphQL, angular 16, ionic 7, older and wiser, maybe TDD this time)
 * v 0.1.0
-    * Jam-API (0.1.12)
+  * Jam-API (0.1.12)
 * v 0.2.0
-    * Index - Ready
-    * Filter/Select UI - Ready
+  * Index - Ready
+  * Filter/Select UI - Ready
 * v 0.3.0
-    * Dashboard - Ready (Stats box)
+  * Dashboard - Ready (Stats box)
 * v 0.4.0
-    * Single Views - Ready
+  * Single Views - Ready
 * V 0.5.0
-    * Queue - no expand only tracks - Kinda Ready
-    * Queue shuffle
-    * addToQueue remove from queue
+  * Queue - no expand only tracks - Kinda Ready
+  * Queue shuffle
+  * addToQueue remove from queue
 * v 0.6.0
-    * Start/Settings - Okayish
+  * Start/Settings - Okayish
 * v 0.7.0
-    * Player - Ready
-    * Cleaned up action handling... no toolbar service anymore
-    * Queue as page not as popup
-        * Play in Queue -> Play from here
+  * Player - Ready
+  * Cleaned up action handling... no toolbar service anymore
+  * Queue as page not as popup
+    * Play in Queue -> Play from here
 * v 0.8.0
-    * Lists - Ready
-        * load more
-    * Selection more, add to queue remove
-    * Problems with hammerjs resolved with own directive...
+  * Lists - Ready
+    * load more
+  * Selection more, add to queue remove
+  * Problems with hammerjs resolved with own directive...
 * v 0.9.0
-    * Dashboard box swiper !
-        * Lazy loading dashboard box
+  * Dashboard box swiper !
+    * Lazy loading dashboard box
 
 Current Version (wip v 0.9.0)
 ----------
+
     * Code clean
         * clean up panel and list item again...
         * todos
@@ -76,57 +73,59 @@ Current Version (wip v 0.9.0)
         * Toolbar title check for better usage empty on single mb?
         * hard stop in folder view on bottom see 1pac folder lvl1... hmm min-height of list
     * Final Testing and New Goals for v 1.0.0
+
 * v 1.0.0
-    * Online only
-    * Artists|Albums|Tracks|Folder only
-    * Random|Newest|Frequent|Recent
-    * Dashboard|Index|Single|Lists
-    * Queue|Player
-    * Browse|Play only
+  * Online only
+  * Artists|Albums|Tracks|Folder only
+  * Random|Newest|Frequent|Recent
+  * Dashboard|Index|Single|Lists
+  * Queue|Player
+  * Browse|Play only
 * v 1.1.0
-    * Playlists
-    * Expand?
+  * Playlists
+  * Expand?
 * v 1.2.0
-    * Fav|Rating|Download|Highest|Avg
+  * Fav|Rating|Download|Highest|Avg
 * v 1.3.0
-    * Podcasts
+  * Podcasts
 * v 1.4.0
-    * Offline Mode
+  * Offline Mode
 * v 1.5.0
-    * Similar|Infos
+  * Similar|Infos
 * v 1.6.0
-    * Lyrics
+  * Lyrics
 
 Minor or Later
 ---------
+
 * Known Issues:
-    * Image popup images
-    * duplicate add to queue...
-        * 2k add to queue -> url for getbyids is 100kb ;)
-    * album artist will never have play state coz queue only holds tracks
-        * Queue with base ? expand, shuffle keep groups ?
-    * queue navigate can be triggered coz item handles it on its own...
+  * Image popup images
+  * duplicate add to queue...
+    * 2k add to queue -> url for getbyids is 100kb ;)
+  * album artist will never have play state coz queue only holds tracks
+    * Queue with base ? expand, shuffle keep groups ?
+  * queue navigate can be triggered coz item handles it on its own...
 * copy from jamberry
-    * no tracks?!?
+  * no tracks?!?
 * nav track ???
 * index
-    * filter clear - turn on after rootfilter return not before
+  * filter clear - turn on after rootfilter return not before
 * display the selection
 * Index
-    * Scroll to next header ???
-    * Scroll pos is kept on type change...
-    * Sort
+  * Scroll to next header ???
+  * Scroll pos is kept on type change...
+  * Sort
 * Artist
-    * switching tabs resets lists... if it doesn't the  hidden ones are not painted correctly....
+  * switching tabs resets lists... if it doesn't the hidden ones are not painted correctly....
 * UI-Update,
-    * Expand, Collapse like selection and jamberry do would be nice
-    * Single Pages
-        * Artist
-            * Toggle Albums like JamBerry does
-    * Usability
+  * Expand, Collapse like selection and jamberry do would be nice
+  * Single Pages
+    * Artist
+      * Toggle Albums like JamBerry does
+  * Usability
 * Selection Page
-    * Collapse/Expand clean up (level by level ... artist album track ... folder...)
-    * ... still need the less clickier version for the items...
+  * Collapse/Expand clean up (level by level ... artist album track ... folder...)
+  * ... still need the less clickier version for the items...
 * Search Page
 * Start Page
 * Transition cover image in queue bind to timeline
@@ -139,18 +138,21 @@ Minor or Later
 * Hover track list indicator (Desktop)
 * a-z-slider?
 * Dashboard box swiper virtual -> wait for ionic i guess or try around a little
-Structure
+  Structure
+
 --------------
+
 * PWA - Make it not Cache everything....
 * DataStore
   * TODO: keeping the old data is nice to collect all information step by step
-  but if something gets deleted we lose this information and still have all the data.
-  So there needs to be a solution for this.
-  Reload the whole data on start? Keep track of errors and remove when occurs? SERVICE WORKER !!!
+    but if something gets deleted we lose this information and still have all the data.
+    So there needs to be a solution for this.
+    Reload the whole data on start? Keep track of errors and remove when occurs? SERVICE WORKER !!!
   * Offline Betrieb / Image Cache SERVICE WORKER !!! @PERFORMANCE BUFF
 
 Bugs
 -------
+
 * Podcasts details
   * Polling for states refreshing and retrieving does crash server... finish stop polling
   * Duration
@@ -166,6 +168,7 @@ Jam-Berry (looks awesome :D)
 
 Think about
 -----------
+
 * Structure Menu: Download list, single pages, single lists, special pages
 * Podcast suggestion debug only? less present?
 * Controls: play, next, prev, shuffle, repeat, fav, volume where to put them
@@ -176,11 +179,12 @@ Think about
 
 Questions:
 ---------
+
 * There is so much image stuff going on.. Artwork? RootFolder Image? and its not image/:id
-    * Artists do not have any image any more (mb coz of folder + fanart image)
-    * only folder can haz multiple images ?
-        * Tracks can haz that too
-            * Albums probably could be generated by the tracks and therefore can haz as well
+  * Artists do not have any image any more (mb coz of folder + fanart image)
+  * only folder can haz multiple images ?
+    * Tracks can haz that too
+      * Albums probably could be generated by the tracks and therefore can haz as well
 * How to search by regEx ?
 * How does similar work? Last-FM? How does this work? MBZ??
 * Can i use the index for something?
@@ -191,13 +195,15 @@ Questions:
 API-Requests ;)
 ---------
 (if i find the time i'll try to make a pull request)
+
 * It would be nice if Jam.SearchQuery could be a stronger base with rootId, rootIds and sortField
   * then the sortfields should somehow extend from a base with 'created'
 
 Server - Discussion
 ----------------
+
 * Playlist and Queue should be able to store any kind of items?
-    * Add a Album or Artitst... to the Queue (just group by them)
+  * Add a Album or Artitst... to the Queue (just group by them)
 
 Server - Problems
 ----------------
@@ -205,24 +211,26 @@ so far so good :D well done...
 
 Feature List so far:
 ------
+
 * Library
-    * Display all Media in different sizes
-    * Filter by Letter, Text, Rootfolder
-    * Select any kind of items
+  * Display all Media in different sizes
+  * Filter by Letter, Text, Rootfolder
+  * Select any kind of items
 * Home
-    * Display all kinds of pre filtered lists for "each" item
-    * Recent, Newest, Frequent, Random
+  * Display all kinds of pre filtered lists for "each" item
+  * Recent, Newest, Frequent, Random
 * Player
-    * Small Player Toolbar
-    * Queue
+  * Small Player Toolbar
+  * Queue
 * Item
-    * Each one has its own page
-    * Toolbelt for all (play, more)
+  * Each one has its own page
+  * Toolbelt for all (play, more)
 * Artist Page
-    * Top Rated Tracks
+  * Top Rated Tracks
 
 How To Update to new version of jam server:
 -----------------
+
 * in jamserve 'npm run build:jam:client'
 * copy complete the generated output folder "jamserve/dist/jam" to "pb&jam/src/jam"
 * adjust change errors from new api
@@ -230,8 +238,10 @@ How To Update to new version of jam server:
 
 Check -> New Server :)
 ----------
+
 * Check all :) with new server ....
-    * Podcasts retrieve Additional Infos from Web (Image, Episode description, Epsiode date)
-      * ETIMEDOUT 85.13.137.87:443 Error crashes the server. I guess retrieving Podcast Episode Info with retrieve crashes on timeout.
-    * FolderIndex has no include params? why not?
-    * Episodes fav no state returned
+  * Podcasts retrieve Additional Infos from Web (Image, Episode description, Epsiode date)
+    * ETIMEDOUT 85.13.137.87:443 Error crashes the server. I guess retrieving Podcast Episode Info with retrieve crashes
+      on timeout.
+  * FolderIndex has no include params? why not?
+  * Episodes fav no state returned

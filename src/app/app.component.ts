@@ -1,36 +1,10 @@
-import {environment} from '../environments/environment';
-import {Component, OnInit} from '@angular/core';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Platform} from '@ionic/angular';
+import { Component } from '@angular/core';
 
 @Component({
-  selector:    'app-root',
-  templateUrl: 'app.component.html'
+  selector: 'pbj-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  constructor(
-    private readonly platform: Platform,
-    private readonly statusBar: StatusBar,
-    private readonly splashScreen: SplashScreen
-  ) {
-  }
-
-  ngOnInit() {
-    //    this.auth.logout().then(() => console.log('logged out'));
-    console.log('APP INIT START');
-    this.platform.ready().then(() => {
-      console.log('APP PLATFORM READY');
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    }).catch(e => console.error(e));
-  }
-
-  noContextMenu(ev: MouseEvent) {
-    //    ev.preventDefault();
-    if (environment.production) {
-      ev.preventDefault();
-    }
-  }
-
+export class AppComponent {
+  constructor() {}
 }

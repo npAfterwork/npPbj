@@ -1,0 +1,61 @@
+overwrite: true
+schema:
+  - "./src/@generated/jam.schema.graphql":
+      assumeValid: true
+documents: "./src/@graphql/**/*.graphql"
+
+generates:
+  src/@generated/np-types.d.ts:
+    config:
+      #     maybeValue: T | null | undefined
+      preResolveTypes: false
+      typesPrefix: ''
+      enumsAsTypes: true
+      nonOptionalTypename: true
+      declarationKind: 'interface'
+      exportFragmentSpreadSubTypes: true
+      flattenGeneratedTypes: false
+      avoidOptionals: false
+      noExport: true
+      namingConvention:
+        typeNames: pascal-case#pascalCase
+        transformUnderscore: true
+    plugins:
+      - add:
+          content:
+            - "export declare namespace GQL {"
+      - add:
+          placement: append
+          content:
+            #              - "export type ID = string;"
+            #              - "export interface Item { __typename: Types; }"
+            #              - "export interface ListItem { __typename: Types; }"
+            - "}"
+      - "typescript"
+  src/@generated/np-api.service.ts:
+    config:
+      namespacedImportName: 'GQL'
+      useIndexSignature: true
+      skipTypename: true
+      useTypeImports: true
+      preResolveTypes: true
+      typesPrefix: ''
+      nonOptionalTypename: true
+      declarationKind: 'interface'
+      exportFragmentSpreadSubTypes: true
+      flattenGeneratedTypes: false
+      avoidOptionals: false
+      namingConvention:
+        typeNames: pascal-case#pascalCase
+        transformUnderscore: false
+      defaultMapper: Partial<{T}>
+      serviceName: 'NPApiService'
+      sdkClass: true
+      noExport: false
+      operationResultSuffix: 'Result'
+    plugins:
+      - add:
+          content:
+            - "import {GQL} from './np-types';"
+      - "typescript-operations"
+      - "typescript-apollo-angular"

@@ -1,30 +1,34 @@
-import {Auth, Jam, JamAuthService} from '../../jam';
-import {CDEFAULT_USER} from '../../model/defaults';
+import {CDEFAULT_USER} from '../../@core/defaults';
 import {Component, OnInit} from '@angular/core';
+import {IonicModule} from "@ionic/angular";
+import {TranslateModule} from "@ngx-translate/core";
+import {FormsModule} from "@angular/forms";
 
 @Component({
-  selector:    'pbj-auth-box',
+  selector: 'pbj-auth-box',
+  standalone: true,
   templateUrl: './auth-settings-box.component.html',
-  styleUrls:   ['./auth-settings-box.component.scss']
+  imports: [
+    IonicModule,
+    TranslateModule,
+    FormsModule
+  ],
+  styleUrls: ['./auth-settings-box.component.scss']
 })
 export class AuthSettingsBoxComponent implements OnInit {
   passwordStyle: 'password' | 'text' = 'password';
   passwordIconColor: 'gray' | '' = 'gray';
-  auth: Auth;
-  private user: Jam.SessionUser;
+  auth!: { server: string; password: string; session: any; username: string };
 
-  constructor(
-    public readonly jamAuth: JamAuthService
-  ) { }
+  constructor() {
+  }
 
   ngOnInit() {
     // this.auth = this.authService.auth || (this.authService.auth = {server:'', username:'', session: undefined, password: ''});
-    this.auth = this.jamAuth.auth || (this.jamAuth.auth = {
+    this.auth = {
       server: CDEFAULT_USER.server, username: CDEFAULT_USER.name, session: undefined, password: CDEFAULT_USER.password
-    });
-    console.log('INIT SETTINGS SERVWE', this.jamAuth.auth);
-    this.user = this.jamAuth.user;
-    console.log(this.auth, this.user);
+    };
+    console.log('INIT SETTINGS SERVWE');
   }
 
   showHidePassword() {

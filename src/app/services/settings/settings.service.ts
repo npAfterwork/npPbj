@@ -1,8 +1,8 @@
-import {HelpEntry} from '../../model/consts';
-import {CDEFAULT_SETTINGS} from '../../model/defaults';
-import {Pbj} from '../../model/model';
 import {Storage} from '@ionic/storage';
 import {Injectable} from '@angular/core';
+import {Pbj} from "src/app/@core/model";
+import {CDEFAULT_SETTINGS} from "src/app/@core/defaults";
+import {HelpEntry} from "src/app/@core/consts";
 
 /** Storage key used for the settings */
 const SETTINGS_KEY = 'pbj-settings';
@@ -13,7 +13,7 @@ const SETTINGS_KEY = 'pbj-settings';
 export class SettingsService {
 
   /** The PbjSettings object */
-  private settings: Pbj.Settings;
+  private settings: Pbj.Settings = CDEFAULT_SETTINGS;
 
   /**
    * Use the Ionic-Storage Service to load and store the app settings
@@ -21,6 +21,7 @@ export class SettingsService {
    */
   constructor(private storage: Storage) {
     console.log('SettingsService CREATE');
+    this.storage.create().catch(reason => console.error(reason));
   }
 
   /**
@@ -44,14 +45,14 @@ export class SettingsService {
    * Reset the settings to the default settings
    */
   resetToDefault() {
-    this.settings = { ...CDEFAULT_SETTINGS };
+    this.settings = {...CDEFAULT_SETTINGS};
     this.save().catch(e => console.error(e));
   }
 
   /**
    * Stores the current settings in the Storage Service
    */
-  async save() {
+  save() {
     return this.storage.set(SETTINGS_KEY, this.settings);
   }
 
@@ -99,16 +100,8 @@ export class SettingsService {
     return this.settings.intern;
   }
 
-  get library() {
-    return this.settings.library;
-  }
-
   get single() {
     return this.settings.single;
-  }
-
-  get home() {
-    return this.settings.home;
   }
 
   get player() {

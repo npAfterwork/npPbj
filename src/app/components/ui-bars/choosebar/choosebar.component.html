@@ -1,7 +1,0 @@
-<ng-container *ngIf="bugfix">
-  <ion-segment scrollable [value]="value" (ionChange)="valueChange.emit($event.detail.value)">
-    <ion-segment-button *ngFor="let item of choices" [value]="item.value">
-      <ion-label>{{item.label}}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-</ng-container>

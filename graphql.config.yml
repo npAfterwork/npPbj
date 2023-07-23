@@ -1,0 +1,10 @@
+schema: ./src/@generated/jam.schema.graphql
+extensions:
+  endpoints:
+    Default GraphQL Endpoint:
+      url: http://localhost:4040/graphql
+      headers:
+        user-agent: JS GraphQL
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5OTYzNTczLTI3ZGMtNDIyMy1iYzkyLTE5ZmYxMzI5YzAyZSIsImNsaWVudCI6Im5wUGJqYW0iLCJpYXQiOjE2NDk4NjMyMTR9.aF1RFbHfp-jvOF4m-2ty2LbLmE2MiYPKZxVfmar__g4
+      introspect: false
+
