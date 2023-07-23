@@ -35,9 +35,9 @@ export class StartPage implements OnInit {
     // }
   }
 
-  async goOnline() {
+  async goOnline(data: any) {
     this.loading = true;
-    console.log('get auth');
+    console.log('get auth', data);
     await this.#authService.login('admin', 'admin');
     console.log('check was not successful => go settings',);
   }

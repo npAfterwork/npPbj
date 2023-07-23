@@ -68,7 +68,7 @@ export function ConfigurationServiceFactory(): Configuration {
       useFactory: (storage: StorageService, tipOfTheDay: TipOfTheDayService) =>
         async () => {
           await storage.initialize();
-          await tipOfTheDay.initialize();
+          await tipOfTheDay.initialize('pbj.tip-of-the-days');
         }
       ,
     },

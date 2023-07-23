@@ -1,29 +1,30 @@
 <form [formGroup]="form">
   <ion-list>
     <ion-item lines="none">
-      <ion-label>
-        Login
-      </ion-label>
+      <ion-text color="primary">
+        <h3>Login</h3>
+      </ion-text>
     </ion-item>
-    <ion-input
-      fill="solid"
-      label="{{ 'SETTINGS.SERVER.SERVER' | translate }}"
-      labelPlacement="stacked"
-      [formControl]="serverControl"
-      [placeholder]="'SETTINGS.SERVER.SERVER_PH' | translate"
-      (ionBlur)="onUserChanged()"
-    ></ion-input>
-    <ion-input
-      fill="solid"
-      label="{{ 'SETTINGS.SERVER.USER' | translate }}"
-      labelPlacement="stacked"
-      [formControl]="usernameControl"
-      [placeholder]="'SETTINGS.SERVER.USER_PH' | translate"
-      (ionBlur)="onUserChanged()"
-    ></ion-input>
-    <div flex-row>
+    <ion-item>
       <ion-input
-        fill="solid"
+        label="{{ 'SETTINGS.SERVER.SERVER' | translate }}"
+        labelPlacement="stacked"
+        [formControl]="serverControl"
+        [placeholder]="'SETTINGS.SERVER.SERVER_PH' | translate"
+        (ionBlur)="onUserChanged()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="{{ 'SETTINGS.SERVER.USER' | translate }}"
+        labelPlacement="stacked"
+        [formControl]="usernameControl"
+        [placeholder]="'SETTINGS.SERVER.USER_PH' | translate"
+        (ionBlur)="onUserChanged()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
         label="{{ 'SETTINGS.SERVER.PASSWORD' | translate }}"
         labelPlacement="stacked"
         [formControl]="passwordControl"
@@ -31,6 +32,11 @@
         [placeholder]="'SETTINGS.SERVER.PASSWORD_PH' | translate"
         (ionBlur)="onUserChanged()" name="password"
       ></ion-input>
-    </div>
+
+    </ion-item>
+    <ion-item>
+      <ion-button class="login-button" type="submit" (click)="submit()">Login</ion-button>
+
+    </ion-item>
   </ion-list>
 </form>

@@ -2,48 +2,47 @@ import {inject, Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 import {TranslateService} from "@ngx-translate/core";
 import {StorageService} from "src/app/services/storage/storage.service";
+import {firstValueFrom} from "rxjs";
 
-interface TipOfTheDayStore {
-  lastTipsOfTheDay: number[];
-}
+const STORAGE_KEY = 'np.lastTips';
+const TRANSLATE_KEY = 'TIPS';
 
 @Injectable({providedIn: 'root'})
 export class TipOfTheDayService {
-  static TIPS_TEXT_ID: string;
-  static STORAGE_KEY: string;
+  static TIPS_TEXT_ID = TRANSLATE_KEY;
+  static STORAGE_KEY = STORAGE_KEY;
 
   readonly #translate = inject(TranslateService);
   readonly #storage = inject(StorageService);
 
-  #tipOfTheDay = {
+  #store = {
     all: [],
     current: -1,
-    store: new BehaviorSubject<string>(null)
+    lastTipsOfTheDay: [] as number[],
+    tipOfTheDay: new BehaviorSubject<string>(null)
   };
 
-  readonly tip$ = this.#tipOfTheDay.store.asObservable();
-  #store: TipOfTheDayStore;
+  readonly tipOfTheDay$ = this.#store.tipOfTheDay.asObservable();
 
-
-  async initialize(storageKey = 'pbj.tips', translateKey = 'TIPS') {
+  async initialize(storageKey = STORAGE_KEY, translateKey = TRANSLATE_KEY) {
     TipOfTheDayService.STORAGE_KEY = storageKey;
     TipOfTheDayService.TIPS_TEXT_ID = translateKey;
 
-    this.#store = await this.#storage.get<TipOfTheDayStore>(TipOfTheDayService.STORAGE_KEY, {lastTipsOfTheDay: []});
-    this.#tipOfTheDay.all = await this.#translate.get(TipOfTheDayService.TIPS_TEXT_ID).toPromise();
-    this.#tipOfTheDay.current = Math.trunc(Math.random() * this.#tipOfTheDay.all.length);
+    this.#store.lastTipsOfTheDay = await this.#storage.get<number[]>(TipOfTheDayService.STORAGE_KEY, []);
+    this.#store.all = await firstValueFrom(this.#translate.get(TipOfTheDayService.TIPS_TEXT_ID));
+    this.#store.current = Math.trunc(Math.random() * this.#store.all.length);
   }
 
   async next() {
-    while (this.#store.lastTipsOfTheDay.indexOf(this.#tipOfTheDay.current) !== -1) {
-      this.#tipOfTheDay.current = Math.trunc(Math.random() * this.#tipOfTheDay.all.length);
+    const lastTipsOfTheDay = this.#store.lastTipsOfTheDay;
+    while (lastTipsOfTheDay.indexOf(this.#store.current) !== -1) {
+      this.#store.current = Math.trunc(Math.random() * this.#store.all.length);
     }
-    if (this.#store.lastTipsOfTheDay.length >= this.#tipOfTheDay.all.length / 2) {
-      this.#store.lastTipsOfTheDay.shift();
+    if (lastTipsOfTheDay.length >= this.#store.all.length / 2) {
+      lastTipsOfTheDay.shift();
     }
-    this.#store.lastTipsOfTheDay.push(this.#tipOfTheDay.current);
-    await this.#storage.set(TipOfTheDayService.STORAGE_KEY, this.#store);
-    this.#tipOfTheDay.store.next(this.#tipOfTheDay.all[this.#tipOfTheDay.current]);
-
+    lastTipsOfTheDay.push(this.#store.current);
+    await this.#storage.set(TipOfTheDayService.STORAGE_KEY, lastTipsOfTheDay);
+    this.#store.tipOfTheDay.next(this.#store.all[this.#store.current]);
   }
 }
