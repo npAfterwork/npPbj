@@ -1,0 +1,44 @@
+/* --------------------------------------------------
+   Breakpoint Settings
+   -------------------------------------------------- */
+
+// min or max
+$media-direction: max; // min / max — default is min (mobile first)
+
+//xs	0	size-	offset-	push-	pull-	Set columns when (min-width: 0)
+//sm	576px	size-sm-	offset-sm-	push-sm-	pull-sm-	Set columns when (min-width: 576px)
+//md	768px	size-md-	offset-md-	push-md-	pull-md-	Set columns when (min-width: 768px)
+//lg	992px	size-lg-	offset-lg-	push-lg-	pull-lg-	Set columns when (min-width: 992px)
+//xl	1200px	size-xl-	offset-xl-	push-xl-	pull-xl-	Set columns when (min-width: 1200px)
+$breakpoints: (
+  'default': '',
+  'xs': 0px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+);
+/* --------------------------------------------------
+   Breakpoint Mixin
+   -------------------------------------------------- */
+@mixin breakpoint($breakpoint,$direction: $media-direction) {
+
+  // Es wird gecheckt ob der Wert in der Sass Map vorhanden ist
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Ausgabe
+    @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+    // Wenn ihr oben einen Wert eingetragen habt wird hier gecheckt ob ihr einen Einheit angehängt habt. Falls nicht wird px genutzt.
+  @else if unitless($breakpoint) {
+    $breakpoint: $breakpoint + 0px;
+
+    // Ausgabe
+    @media (#{$direction}-width: $breakpoint) {
+      @content;
+    }
+  }
+}

@@ -1,4 +1,8 @@
+@use "/src/theme/variables";
+@use "/src/theme/breakpoints" as breaks;
+
 :host {
+
   .wrapper {
     &:first-of-type {
       border-right: 1px solid grey;
@@ -9,22 +13,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    margin: 0 auto;
-
+    padding: 3rem;
   }
 
-  ion-list {
-    padding: 0;
-  }
-
-  ion-card {
-    ion-card-content {
-      padding: 0;
+  main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    @include breaks.breakpoint('sm') {
+      flex-direction: column;
+      overflow: auto;
     }
   }
 
-  .loading-card {
+  .asset {
+    flex: 1;
+    min-width: 175px;
+    max-height: variables.$gc-large;
+    max-width: variables.$gc-large;
+  }
 
+  .teaser {
+    flex: 1;
+    color: var(--ion-text-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

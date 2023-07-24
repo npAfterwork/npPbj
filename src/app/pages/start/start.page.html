@@ -1,24 +1,16 @@
-<main flex-row flex-item>
-  -
+<main>
   <div class="wrapper" pbj-bg-dark>
-    <ion-img src="/assets/img/logo.svg" style="max-height: 200px; max-width: 300px;"></ion-img>
-    <ion-card class="loading-card" [hidden]="!loading">
-      <!--                <ion-img src="/assets/img/logo.svg"></ion-img>-->
-      <ion-card-header>
-        <ion-card-title>Welcome</ion-card-title>
-        <ion-card-subtitle>...to the world of tomorrow</ion-card-subtitle>
-      </ion-card-header>
-
-      <ion-card-content>
-        <ion-item lines="none">
-          <ion-icon slot="start" name="bulb-sharp" color="primary"></ion-icon>
-          {{tipOfTheDay.tipOfTheDay$ | async | translate}}
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
+    <ion-img class="asset" src="/assets/img/start-page.webp"></ion-img>
+    <ion-text class="teaser">
+      <h3>Welcome</h3>
+      <h4>...to the world of tomorrow</h4>
+      <ion-icon slot="start" name="bulb-sharp" color="primary"></ion-icon>
+      {{tipOfTheDay.tipOfTheDay$ | async | translate}}
+    </ion-text>
   </div>
-  <div class="wrapper" pbj-bg-light>
+  <div class="wrapper" pbj-bg-white>
     <div>
+      <ion-img src="/assets/img/start-page-logo.svg"></ion-img>
       <pbj-auth-box (login)="goOnline($event)"></pbj-auth-box>
     </div>
   </div>
