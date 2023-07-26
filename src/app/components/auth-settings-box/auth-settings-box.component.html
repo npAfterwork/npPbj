@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <ion-list>
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
         label="{{ 'SETTINGS.SERVER.SERVER' | translate }}"
         labelPlacement="stacked"
@@ -9,7 +9,7 @@
         (ionBlur)="onUserChanged()"
       ></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
         label="{{ 'SETTINGS.SERVER.USER' | translate }}"
         labelPlacement="stacked"
@@ -18,7 +18,7 @@
         (ionBlur)="onUserChanged()"
       ></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
         label="{{ 'SETTINGS.SERVER.PASSWORD' | translate }}"
         labelPlacement="stacked"
@@ -31,7 +31,9 @@
     </ion-item>
     <ion-item lines="none">
       <ion-button class="login-button" type="submit" (click)="submit()">Login</ion-button>
-
+    </ion-item>
+    <ion-item lines="none">
+      <ion-checkbox>Keep me logged in</ion-checkbox>
     </ion-item>
   </ion-list>
 </form>

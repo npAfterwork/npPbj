@@ -27,7 +27,11 @@ export class AuthSettingsBoxComponent implements OnInit {
   usernameControl = new FormControl<string | null>(CDEFAULT_USER.name, Validators.required)
   passwordControl = new FormControl<string | null>(CDEFAULT_USER.password, Validators.required)
 
-  form = new FormGroup({
+  form = new FormGroup<{
+    server: FormControl<string | null>,
+    username: FormControl<string | null>,
+    password: FormControl<string | null>,
+  }>({
     server: this.serverControl,
     username: this.usernameControl,
     password: this.passwordControl
@@ -48,9 +52,10 @@ export class AuthSettingsBoxComponent implements OnInit {
   }
 
   submit() {
+    let data = this.form.getRawValue();
     console.log(
-      this.form.getRawValue()
+      data
     );
-    this.login.emit(this.form.getRawValue());
+    this.login.emit(data);
   }
 }

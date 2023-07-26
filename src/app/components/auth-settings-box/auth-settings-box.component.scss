@@ -1,6 +1,14 @@
 :host {
   --ion-background-color: transparent;
 
+  ion-item {
+    background: #eeeeee;
+
+    ion-input {
+      border-bottom: 1px solid gray;
+    }
+  }
+
   .login-button {
     width: 100%;
   }

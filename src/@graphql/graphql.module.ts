@@ -42,7 +42,9 @@ const errorLink = onError(({graphQLErrors, networkError, response}) => {
 export function createApollo(httpLink: HttpLink, authService: AuthService): ApolloClientOptions<any> {
   const cache = new InMemoryCache({});
   // create http
-  const http = httpLink.create({uri});
+  // const http = createHttpLink({uri, credentials: 'same-origin'})
+
+  const http = httpLink.create({uri}); //  withCredentials: true
   const wsLink = new GraphQLWsLink(createClient({
     url: subscriptionUrl,
   }));
@@ -66,8 +68,8 @@ export function createApollo(httpLink: HttpLink, authService: AuthService): Apol
     return {
       headers: {
         ...headers,
-        authorization: "Bearer " + authService.jwt(),
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authService.jwt(),
+        'Content-Type': 'application/json'
       },
     };
   });

@@ -4,6 +4,7 @@ import {NavService} from "src/app/services/nav/nav.service";
 import {AuthService} from "src/app/services/auth/auth.service";
 import {TranslateService} from "@ngx-translate/core";
 import {TipOfTheDayService} from "src/app/services/tip-of-the-day/tip-of-the-day.service";
+import {NPApiService} from "src/@generated/np-api.service";
 
 @Component({
   selector: 'pbj-start',
@@ -11,8 +12,9 @@ import {TipOfTheDayService} from "src/app/services/tip-of-the-day/tip-of-the-day
   styleUrls: ['./start.page.scss']
 })
 export class StartPage implements OnInit {
-  #authService = inject(AuthService);
-  #translate = inject(TranslateService);
+  readonly #authService = inject(AuthService);
+  readonly #translate = inject(TranslateService);
+  readonly #api = inject(NPApiService);
   @ViewChild('server') server: AuthSettingsBoxComponent;
 
   loading = false;
@@ -37,9 +39,15 @@ export class StartPage implements OnInit {
 
   async goOnline(data: any) {
     this.loading = true;
-    console.log('get auth', data);
+    console.log('go online', data);
+    const album = await this.#api.album({id: '00634a9b-9167-4e83-b3e0-51139d344df9'}).toPromise()
+                            .catch(reason => console.log(reason))
+    console.log(album);
     await this.#authService.login('admin', 'admin');
     console.log('check was not successful => go settings',);
+    const album2 = await this.#api.album({id: '00634a9b-9167-4e83-b3e0-51139d344df9'}).toPromise()
+                             .catch(reason => console.log(reason))
+    console.log(album2);
   }
 
   private async loadInitialData() {
