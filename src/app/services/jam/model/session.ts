@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import {SessionUser} from 'src/@jam/model/sessionUser';
+import {SessionUser} from 'src/app/services/jam/model/sessionUser';
 
 export interface Session {
   /**

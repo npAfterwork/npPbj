@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import {ID} from 'src/@jam/model/iD';
-import {UserRoles} from 'src/@jam/model/userRoles';
+import {ID} from 'src/app/services/jam/model/iD';
+import {UserRoles} from 'src/app/services/jam/model/userRoles';
 
 export interface SessionUser {
   id: ID;

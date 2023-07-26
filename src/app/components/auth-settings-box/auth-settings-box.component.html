@@ -6,7 +6,6 @@
         labelPlacement="stacked"
         [formControl]="serverControl"
         [placeholder]="'SETTINGS.SERVER.SERVER_PH' | translate"
-        (ionBlur)="onUserChanged()"
       ></ion-input>
     </ion-item>
     <ion-item lines="none">
@@ -15,7 +14,6 @@
         labelPlacement="stacked"
         [formControl]="usernameControl"
         [placeholder]="'SETTINGS.SERVER.USER_PH' | translate"
-        (ionBlur)="onUserChanged()"
       ></ion-input>
     </ion-item>
     <ion-item lines="none">
@@ -25,15 +23,18 @@
         [formControl]="passwordControl"
         [type]="passwordStyle"
         [placeholder]="'SETTINGS.SERVER.PASSWORD_PH' | translate"
-        (ionBlur)="onUserChanged()" name="password"
       ></ion-input>
-
     </ion-item>
     <ion-item lines="none">
-      <ion-button class="login-button" type="submit" (click)="submit()">Login</ion-button>
+      <ion-button class="login-button" type="submit" (click)="submit()" [disabled]="form.invalid">Login</ion-button>
+    </ion-item>
+    <ion-item *ngIf="hasError" lines="none" class="error">
+      <ion-text color="warning">
+        <small>Sorry :( Login failed. See console for details.</small>
+      </ion-text>
     </ion-item>
     <ion-item lines="none">
-      <ion-checkbox>Keep me logged in</ion-checkbox>
+      <ion-checkbox [formControl]="keepMeLoggedInControl">Keep me logged in</ion-checkbox>
     </ion-item>
   </ion-list>
 </form>

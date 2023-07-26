@@ -30,7 +30,5 @@ export class HomePage implements OnInit {
 
   async login() {
     console.log('get auth');
-    await this.#authService.login('admin', 'admin');
-    console.log('check was not successful => go settings',);
   }
 }

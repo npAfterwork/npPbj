@@ -9,8 +9,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {IonicModule, IonicRouteStrategy} from "@ionic/angular";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {IonicStorageModule} from "@ionic/storage-angular";
-import {Configuration} from "src/@jam/configuration";
-import {ApiModule} from "src/@jam/api.module";
 import {GraphQLModule} from "src/@graphql/graphql.module";
 import {TipOfTheDayService} from "src/app/services/tip-of-the-day/tip-of-the-day.service";
 import {StorageService} from "src/app/services/storage/storage.service";
@@ -19,13 +17,6 @@ import {StorageService} from "src/app/services/storage/storage.service";
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
 }
-
-export function ConfigurationServiceFactory(): Configuration {
-  return new Configuration({
-    withCredentials: true
-  })
-}
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -53,9 +44,6 @@ export function ConfigurationServiceFactory(): Configuration {
         storeName: 'pbj-store',
         description: 'Pb&J Data storage'
       }),
-    ApiModule.forRoot(
-      ConfigurationServiceFactory,
-    ),
     GraphQLModule,
     AppRoutingModule,
   ],
