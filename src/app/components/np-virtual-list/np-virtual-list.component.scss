@@ -1,0 +1,9 @@
+@use "/src/theme/mixins";
+
+:host {
+  cdk-virtual-scroll-viewport {
+    @include mixins.np-scrollbar();
+    height: 100%;
+    width: 100%;
+  }
+}

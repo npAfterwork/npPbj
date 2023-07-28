@@ -1,3 +1,23 @@
+@mixin np-scrollbar() {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--ion-color-step-150);
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--ion-color-step-150);
+  }
+}
+
 @mixin ellipsed() {
   display: block;
   overflow: hidden;

@@ -1,6 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {NPApiService} from "../../../@generated/np-api.service";
-import {AuthService} from "src/app/services/auth/auth.service";
+import {NPApiService} from "src/@generated/np-api.service";
 
 @Component({
   selector: 'app-home',
@@ -26,7 +25,7 @@ export class HomePage implements OnInit {
       console.log(album.data.album.artist.name);
   }
 
-  #authService = inject(AuthService);
+  items = new Array(250).fill({namo: 'oman'});
 
   async login() {
     console.log('get auth');

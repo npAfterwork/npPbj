@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -15,11 +16,6 @@
       "dom",
       "esnext.asynciterable"
     ],
-    "paths": {
-      "src/*": [
-        "./src/*"
-      ]
-    },
     "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true
   },

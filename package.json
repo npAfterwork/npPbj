@@ -6,6 +6,7 @@
   "scripts": {
     "start-client": "ng serve",
     "start-server": "cd ../jamserve/ & npm run start",
+    "clear:cache": "ng clear-cache",
     "prebuild": "ts-node  ./dev/adjust-version",
     "build": "ng build --configuration production",
     "gen-schema": "graphql-codegen --config codegen-schema.yml",
