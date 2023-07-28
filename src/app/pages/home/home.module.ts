@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {HomePage} from './home.page';
 
 import {HomePageRoutingModule} from './home-routing.module';
-import {NPVirtualListComponent} from "src/app/components/np-virtual-list/np-virtual-list.component";
+import {NPVirtualListComponent} from "src/app/@modules/np-virtual-list/np-virtual-list.component";
 
 
 @NgModule({

@@ -25,6 +25,9 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+// import all ngx spinner animations
+@import "theme/spinner";
+
 @import "./theme/variables";
 @import "./theme/mixins";
 @import "./theme/theme";

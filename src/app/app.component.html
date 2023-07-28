@@ -1,3 +1,19 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-menu type="overlay" contentId="main-content">
+        <ion-list>
+            <ion-item button="true" (click)="spinnerService.show()">sdfasdf sdf</ion-item>
+        </ion-list>
+    </ion-menu>
+    <ion-content id="main-content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+    <np-la-spinner></np-la-spinner>
 </ion-app>
