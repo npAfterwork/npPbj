@@ -22,13 +22,18 @@
       <ion-avatar slot="start">
         <img src="https://loremflickr.com/40/40" alt="avatar"/>
       </ion-avatar>
-      <ion-label> {{item.namo }} in the template</ion-label>
+      <ion-label> {{item.name }} in the template</ion-label>
     </ng-template>
-
+    <div flex-row>
+      <np-image-card></np-image-card>
+      <np-image-card></np-image-card>
+      <np-image-card></np-image-card>
+    </div>
     <strong>Ready to create an app?</strong>
     <ion-button (click)="extracted()">do it again</ion-button>
     <ion-button (click)="login()">login</ion-button>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer"
+                           href="https://ionicframework.com/docs/components">UI
       Components</a></p>
   </div>
 </ion-content>

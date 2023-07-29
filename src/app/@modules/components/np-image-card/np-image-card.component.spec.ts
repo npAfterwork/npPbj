@@ -1,19 +1,19 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {IonicModule} from '@ionic/angular';
 
-import {NPVirtualListComponent} from 'src/app/@modules/np-virtual-list/np-virtual-list.component';
+import {NPImageCardComponent} from 'src/app/@modules/components/np-image-card/np-image-card.component';
 
-describe('NPVirtualListComponent', () => {
-    let component: NPVirtualListComponent<any>;
-    let fixture: ComponentFixture<NPVirtualListComponent<any>>;
+describe('NpImageCardComponent', () => {
+    let component: NPImageCardComponent;
+    let fixture: ComponentFixture<NPImageCardComponent>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [NPVirtualListComponent],
+            declarations: [NPImageCardComponent],
             imports: [IonicModule.forRoot()]
         }).compileComponents();
 
-        fixture = TestBed.createComponent(NPVirtualListComponent);
+        fixture = TestBed.createComponent(NPImageCardComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));

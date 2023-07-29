@@ -1,6 +1,7 @@
+import {DataSource} from "@angular/cdk/collections";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 import {NgTemplateOutlet} from "@angular/common";
 import {Component, EventEmitter, Input, OnInit, TemplateRef} from '@angular/core';
-import {ScrollingModule} from "@angular/cdk/scrolling";
 import {IonicModule} from "@ionic/angular";
 
 @Component({
@@ -15,7 +16,7 @@ import {IonicModule} from "@ionic/angular";
   ]
 })
 export class NPVirtualListComponent<T> implements OnInit {
-  @Input() items: T[];
+  @Input() items: T[] | DataSource<T>;
   @Input() itemTemplate: TemplateRef<any>;
   itemClicked = new EventEmitter<T>;
 

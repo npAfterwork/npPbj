@@ -6,8 +6,6 @@ export class StorageService {
   private storage = inject(Storage);
   private _storage: Storage | null = null;
 
-  private t = Math.random();
-
   public set(key: string, value: any) {
     return this._storage?.set(key, value);
   }

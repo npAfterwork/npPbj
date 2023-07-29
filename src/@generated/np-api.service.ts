@@ -15,7 +15,7 @@ export type AlbumQueryResult = { __typename: 'Query', album: { __typename: 'Albu
 export type AlbumsQueryVariables = GQL.Exact<{ [key: string]: never; }>;
 
 
-export type AlbumsQueryResult = { __typename: 'Query', albums: { __typename: 'AlbumPageQL', total: number, items: Array<{ __typename: 'AlbumQL', name: string, artist: { __typename: 'ArtistQL', name: string } }> } };
+export type AlbumsQueryResult = { __typename: 'Query', albums: { __typename: 'AlbumPageQL', total: number, items: Array<{ __typename: 'AlbumQL', albumType: GQL.AlbumType, name: string, artist: { __typename: 'ArtistQL', id: string } }> } };
 
 export const AlbumDetailFragmentDoc = gql`
     fragment AlbumDetail on AlbumQL {
@@ -50,17 +50,14 @@ export const AlbumDocument = gql`
   }
 export const AlbumsDocument = gql`
     query albums {
-  albums {
+  albums(page: {skip: 1, take: 3}) {
     items {
-      name
-      artist {
-        name
-      }
+      ...AlbumDetail
     }
     total
   }
 }
-    `;
+    ${AlbumDetailFragmentDoc}`;
 
   @Injectable({
     providedIn: 'root'

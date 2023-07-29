@@ -9,11 +9,11 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {GraphQLModule} from "src/@graphql/graphql.module";
 import {LaSpinnerComponent} from "src/app/@modules/la-rnd-spinner/la-spinner.component";
-import {StorageService} from "src/app/services/storage/storage.service";
+import {StorageService} from "src/app/@modules/storage/storage.service";
+
+import {TipOfTheDayService} from "./@modules/tip-of-the-day/tip-of-the-day.service";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-
-import {TipOfTheDayService} from "./services/tip-of-the-day/tip-of-the-day.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
             }),
         IonicModule.forRoot(
             {
-                mode: 'md',
+                mode: 'ios',
                 animated: true,
                 hardwareBackButton: true
             }),

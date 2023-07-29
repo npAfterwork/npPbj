@@ -1,9 +1,8 @@
-import {AuthSettingsBoxComponent} from '../../components/auth-settings-box/auth-settings-box.component';
-import {Component, inject, OnInit, ViewChild} from '@angular/core';
-import {NavService} from "src/app/services/nav/nav.service";
-import {TipOfTheDayService} from "src/app/services/tip-of-the-day/tip-of-the-day.service";
-import {NPApiService} from "src/@generated/np-api.service";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {TipOfTheDayService} from "src/app/@modules/tip-of-the-day/tip-of-the-day.service";
 import {SessionUser} from "src/app/services/jam/model/sessionUser";
+import {NavService} from "src/app/services/nav/nav.service";
+import {AuthSettingsBoxComponent} from '../../components/auth-settings-box/auth-settings-box.component';
 
 @Component({
   selector: 'pbj-start',
@@ -11,7 +10,6 @@ import {SessionUser} from "src/app/services/jam/model/sessionUser";
   styleUrls: ['./start.page.scss']
 })
 export class StartPage implements OnInit {
-  readonly #api = inject(NPApiService);
   @ViewChild('server') server: AuthSettingsBoxComponent;
 
   loading = false;
@@ -39,14 +37,4 @@ export class StartPage implements OnInit {
 
   }
 
-  private async loadInitialData() {
-    // setInterval(() => this.progress = Math.min(++this.progress, 100), 50);
-    // await this.dataService.load();
-    await this.start();
-  }
-
-  private async start() {
-    console.log('Start App');
-    await this.navService.navigateToHome();
-  }
 }
