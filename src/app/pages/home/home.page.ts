@@ -1,6 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {NPApiService} from "src/@generated/np-api.service";
 import {AlbumsDataSource} from "../../@datasources/albums.datasource";
+import {NPResponsiveService} from "../../@modules/responsive/np-responsive.service";
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,20 @@ import {AlbumsDataSource} from "../../@datasources/albums.datasource";
 })
 export class HomePage implements OnInit {
   #api = inject(NPApiService);
+  responsive = inject(NPResponsiveService);
+  items = new AlbumsDataSource();
+  state = this.responsive.state$;
+  xs = this.responsive.watchBreak('xs');
+  sm = this.responsive.watchBreak('sm');
+  md = this.responsive.watchBreak('md');
+  lg = this.responsive.watchBreak('lg');
+  xl = this.responsive.watchBreak('xl');
 
   constructor() {
   }
 
   async ngOnInit() {
-
+    this.items.initialize();
   }
 
 
@@ -25,7 +34,6 @@ export class HomePage implements OnInit {
       console.log(album.data.album.artist.name);
   }
 
-  items = new AlbumsDataSource();
 
   async login() {
     console.log('get auth');
