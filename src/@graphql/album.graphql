@@ -1,27 +1,27 @@
 fragment AlbumDetail on AlbumQL {
-    albumType
-    artist {
-        id
-    }
-    name
+  albumType
+  artist {
+    id
+  }
+  name
 }
 
 query album($id: ID!){
-    album(id: $id)
-    {
-        name
-        id
-        artist {
-            name
-        }
+  album(id: $id)
+  {
+    name
+    id
+    artist {
+      name
     }
+  }
 }
-query albums{
-    albums(page: {skip: 1, take: 3})
-    {
-        items {
-            ...AlbumDetail
-        }
-        total
+query albums($skip: Int!, $take: Int){
+  albums(page: {skip: $skip, take: $take})
+  {
+    items {
+      ...AlbumDetail
     }
+    total
+  }
 }

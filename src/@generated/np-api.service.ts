@@ -12,7 +12,10 @@ export type AlbumQueryVariables = GQL.Exact<{
 
 export type AlbumQueryResult = { __typename: 'Query', album: { __typename: 'AlbumQL', name: string, id: string, artist: { __typename: 'ArtistQL', name: string } } };
 
-export type AlbumsQueryVariables = GQL.Exact<{ [key: string]: never; }>;
+export type AlbumsQueryVariables = GQL.Exact<{
+  skip: GQL.Scalars['Int'];
+  take?: GQL.InputMaybe<GQL.Scalars['Int']>;
+}>;
 
 
 export type AlbumsQueryResult = { __typename: 'Query', albums: { __typename: 'AlbumPageQL', total: number, items: Array<{ __typename: 'AlbumQL', albumType: GQL.AlbumType, name: string, artist: { __typename: 'ArtistQL', id: string } }> } };
@@ -49,8 +52,8 @@ export const AlbumDocument = gql`
     }
   }
 export const AlbumsDocument = gql`
-    query albums {
-  albums(page: {skip: 1, take: 3}) {
+    query albums($skip: Int!, $take: Int) {
+  albums(page: {skip: $skip, take: $take}) {
     items {
       ...AlbumDetail
     }
@@ -99,11 +102,11 @@ export const AlbumsDocument = gql`
       return this.albumGql.watch(variables, options)
     }
     
-    albums(variables?: AlbumsQueryVariables, options?: QueryOptionsAlone<AlbumsQueryVariables>) {
+    albums(variables: AlbumsQueryVariables, options?: QueryOptionsAlone<AlbumsQueryVariables>) {
       return this.albumsGql.fetch(variables, options)
     }
     
-    albumsWatch(variables?: AlbumsQueryVariables, options?: WatchQueryOptionsAlone<AlbumsQueryVariables>) {
+    albumsWatch(variables: AlbumsQueryVariables, options?: WatchQueryOptionsAlone<AlbumsQueryVariables>) {
       return this.albumsGql.watch(variables, options)
     }
   }

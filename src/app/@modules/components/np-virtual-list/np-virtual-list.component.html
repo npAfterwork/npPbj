@@ -1,8 +1,9 @@
 <ion-content [scrollY]="false">
-  <cdk-virtual-scroll-viewport class="ion-content-scroll-host" itemSize="56" minBufferPx="900" maxBufferPx="1350">
+  <cdk-virtual-scroll-viewport class="ion-content-scroll-host" itemSize="56" minBufferPx="560" maxBufferPx="1120">
     <ion-list>
-      <ion-item *cdkVirtualFor="let item of items" [button]="true" (click)="itemClicked.emit(item)">
-        <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:item}"></ng-container>
+      <ion-item *cdkVirtualFor="let item of items; let idx = index" [button]="true" (click)="itemClicked.emit(item)">
+        <ng-container [ngTemplateOutlet]="itemTemplate"
+                      [ngTemplateOutletContext]="{$implicit:item, idx:idx + 1}"></ng-container>
       </ion-item>
     </ion-list>
   </cdk-virtual-scroll-viewport>

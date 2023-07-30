@@ -34,7 +34,7 @@ export class StartPage implements OnInit {
 
   async goOnline(data: SessionUser) {
     console.log('go online', data);
-
+    return this.navService.navigateToHome();
   }
 
 }
