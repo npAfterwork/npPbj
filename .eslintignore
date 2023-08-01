@@ -5,5 +5,5 @@ www
 platforms
 plugins
 resources
-src/app/jam
 environments
+src/@generated

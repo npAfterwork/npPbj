@@ -1,7 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {NPApiService} from "src/@generated/np-api.service";
+import {CDEFAULT_USER} from "../../@core/defaults";
 import {AlbumsDataSource} from "../../@datasources/albums.datasource";
 import {NPResponsiveService} from "../../@modules/responsive/np-responsive.service";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -18,11 +20,19 @@ export class HomePage implements OnInit {
   md = this.responsive.watchBreak('md');
   lg = this.responsive.watchBreak('lg');
   xl = this.responsive.watchBreak('xl');
+  readonly #authService = inject(AuthService);
 
   constructor() {
   }
 
   async ngOnInit() {
+
+    await this.#authService.login(
+      CDEFAULT_USER.server,
+      CDEFAULT_USER.name,
+      CDEFAULT_USER.password,
+      true
+    )
     this.items.initialize();
   }
 

@@ -22,17 +22,19 @@
       lg: {{lg | async | json}}
       xl: {{xl | async | json}}
     </div>
-    <div flex-row>
-      <np-image-card></np-image-card>
-      <np-image-card></np-image-card>
-      <np-image-card></np-image-card>
-      <np-image-card></np-image-card>
-    </div>
 
     <np-virtual-list
       [items]="items"
       [itemTemplate]="itemTemplate"
     ></np-virtual-list>
+    <np-responsiv-row
+      [items]="items"
+      [itemTemplate]="itemTemplate2"
+    ></np-responsiv-row>
+
+    <ng-template #itemTemplate2 let-item let-idx="idx">
+      <np-image-card></np-image-card>
+    </ng-template>
     <ng-template #itemTemplate let-item let-idx="idx">
       <ion-avatar slot="start">
         <img src="https://loremflickr.com/40/40" alt="avatar"/>

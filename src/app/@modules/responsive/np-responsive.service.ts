@@ -2,7 +2,7 @@ import {Injectable, OnDestroy} from '@angular/core';
 import {Observable} from "rxjs";
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 
-type TBreakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type TBreakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 @Injectable({
   providedIn: 'root'
@@ -72,4 +72,7 @@ export class NPResponsiveService implements OnDestroy {
     }
   }
 
+  getState() {
+    return this.#state.value;
+  }
 }
