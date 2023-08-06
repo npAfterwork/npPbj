@@ -1,9 +1,10 @@
 fragment AlbumDetail on AlbumQL {
+  id
+  name
   albumType
   artist {
     id
   }
-  name
 }
 
 query album($id: ID!){

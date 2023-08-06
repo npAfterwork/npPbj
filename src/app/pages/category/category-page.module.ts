@@ -5,9 +5,10 @@ import {IonicModule} from '@ionic/angular';
 import {NPImageCardComponent} from "src/app/@modules/components/np-image-card/np-image-card.component";
 import {NPVirtualListComponent} from "src/app/@modules/components/np-virtual-list/np-virtual-list.component";
 import {NPResponsivRowComponent} from "../../@modules/responsive/np-responsiv-row/np-responsiv-row.component";
+import {NPResponsiveGridComponent} from "../../@modules/responsive/np-responsive-grid/np-responsive-grid.component";
 
-import {HomePageRoutingModule} from './home-routing.module';
-import {HomePage} from './home.page';
+import {CategoryPageRoutingModule} from './category-page-routing.module';
+import {CategoryPage} from './category-page.component';
 
 
 @NgModule({
@@ -15,13 +16,14 @@ import {HomePage} from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    CategoryPageRoutingModule,
     NPVirtualListComponent,
     NgOptimizedImage,
     NPImageCardComponent,
-    NPResponsivRowComponent
+    NPResponsivRowComponent,
+    NPResponsiveGridComponent
   ],
-  declarations: [HomePage]
+  declarations: [CategoryPage]
 })
-export class HomePageModule {
+export class CategoryPageModule {
 }

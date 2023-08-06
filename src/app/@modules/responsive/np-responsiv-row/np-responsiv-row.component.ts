@@ -4,7 +4,7 @@ import {Component, inject, Input, OnDestroy, OnInit, TemplateRef} from '@angular
 import {IonicModule} from "@ionic/angular";
 import {Subject} from "rxjs";
 import {Subscription} from "rxjs/internal/Subscription";
-import {NPResponsiveService, TBreakpoint} from "../../responsive/np-responsive.service";
+import {NPResponsiveService, TBreakpoint} from "../np-responsive.service";
 
 @Component({
   selector: 'np-responsiv-row',
@@ -32,19 +32,19 @@ export class NPResponsivRowComponent<T> implements OnInit, OnDestroy {
   #allItems: T[] = [];
 
   readonly #responsivService = inject(NPResponsiveService);
-  #subscription: Subscription;
+  #subscription = new Subscription();
 
   ngOnInit() {
-    this.#subscription = this.#responsivService.state$.subscribe(() => {
+    this.#subscription.add(this.#responsivService.state$.subscribe(() => {
       this.#filterItems();
-    })
+    }));
     if (this.items instanceof DataSource) {
       const collectionViewer = {viewChange: new Subject<ListRange>()};
-      this.items.connect(collectionViewer).subscribe(items => {
+      this.#subscription.add(this.items.connect(collectionViewer).subscribe(items => {
         this.#allItems = [...items];
         this.#filterItems();
         (this.items as DataSource<any>).disconnect(collectionViewer);
-      });
+      }));
       let max = -1;
       for (const breakPoint in this.config) {
         max = Math.max(max, this.config[breakPoint]);

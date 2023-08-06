@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+    <np-responsive-grid
+      [items]="items"
+      [itemTemplate]="itemTemplate2">
+    </np-responsive-grid>
+    <ng-template #itemTemplate let-item let-idx="idx">
+      <ion-label>{{item?.name}}</ion-label>
+    </ng-template>
+    <ng-template #itemTemplate2 let-item let-idx="idx">
+      <np-image-card [title]="item?.name ?? 'Loading'" imageSrc="https://loremflickr.com/800/600"></np-image-card>
+    </ng-template>
+
+    <strong>Ready to create an app?</strong>
+    <ion-button (click)="extracted()">do it again</ion-button>
+    <ion-button (click)="login()">login</ion-button>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer"
+                           href="https://ionicframework.com/docs/components">UI
+      Components</a></p>
+  </div>
+</ion-content>

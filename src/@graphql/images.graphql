@@ -1,0 +1,16 @@
+fragment AlbumDetail on AlbumQL {
+  id
+  name
+  albumType
+  artist {
+    id
+  }
+}
+
+query image($id: ID!){
+  artwork(id: $id) {
+    id
+    width
+    height
+  }
+}

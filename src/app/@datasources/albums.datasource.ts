@@ -1,6 +1,6 @@
 import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {inject} from "@angular/core";
-import {map, Observable} from "rxjs";
+import {map, Observable, take} from "rxjs";
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 import {Subscription} from "rxjs/internal/Subscription";
 import {AlbumDetailFragment, AlbumsGQL} from "src/@generated/np-api.service";
@@ -15,7 +15,7 @@ export abstract class NPBaseDataSource<T> extends DataSource<T> {
   abstract loadPage(page: number): Observable<{ items: T[], total: number }>;
 
   initialize() {
-    this.loadPage(0).subscribe((data) => this.#updatePage(0, data));
+    this.loadPage(0).pipe(take(1)).subscribe((data) => this.#updatePage(0, data));
   }
 
   connect(collectionViewer: CollectionViewer): Observable<T[]> {

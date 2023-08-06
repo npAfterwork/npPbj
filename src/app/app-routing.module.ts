@@ -8,10 +8,13 @@ const routes: Routes = [
   }, {
     path: 'start',
     loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule)
+  }, {
+    path: 'category',
+    loadChildren: () => import('./pages/category/category-page.module').then(m => m.CategoryPageModule)
   },
   {
     path: '',
-    redirectTo: 'start',
+    redirectTo: 'category',
     pathMatch: 'full'
   },
 ];

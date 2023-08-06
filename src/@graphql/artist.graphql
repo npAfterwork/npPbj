@@ -1,0 +1,48 @@
+fragment ArtistInfo on ArtistQL {
+  id
+  name
+  genresCount
+}
+
+fragment ArtistDetail on ArtistQL {
+  ...ArtistInfo
+  albums {
+    name
+  }
+}
+
+query artist($id: ID!){
+  artist(id: $id)
+  {
+    ...ArtistDetail
+  }
+}
+query artists($skip: Int!, $take: Int){
+  artists(page: {skip: $skip, take: $take})
+  {
+    items {
+      ...ArtistDetail
+    }
+    total
+  }
+}
+query artistsInfo($skip: Int!, $take: Int){
+  artists(page: {skip: $skip, take: $take}, order: {orderBy: name})
+  {
+    items {
+      ...ArtistInfo
+    }
+    total
+  }
+}
+
+query bands {
+  artistIndex{
+    groups {
+      name
+      items {
+        ...ArtistInfo
+      }
+    }
+  }
+}
