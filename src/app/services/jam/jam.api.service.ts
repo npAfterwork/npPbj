@@ -5,11 +5,13 @@
  * OpenAPI spec version: 0.2.1
  */
 
-import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CredentialsArgs} from 'src/app/services/jam/model/credentialsArgs';
 import {Session} from 'src/app/services/jam/model/session';
+
+export type ImageFormatType = 'png' | 'jpeg' | 'jpg' | 'tiff';
 
 @Injectable({providedIn: 'root'})
 export class JamApiService {
@@ -17,7 +19,7 @@ export class JamApiService {
   #basePath = '/jam/v1';
   #httpClient = inject(HttpClient);
   #httpHeaders = new HttpHeaders()
-    .set('Accept', 'application/json')
+    // .set('Accept', 'application/json')
     .set('Content-Type', 'application/json');
 
   login(host: string, body: CredentialsArgs, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
@@ -47,6 +49,16 @@ export class JamApiService {
         reportProgress: reportProgress
       }
     );
+  }
+
+
+  image_url(id: string, size?: number, format?: ImageFormatType): string {
+    if ((!id) || (id.length === 0)) {
+      return '';
+    }
+    const s = (size !== undefined ? `_${size.toString()}` : '');
+    const f = (format !== undefined ? `.${format}` : '');
+    return `${this.#host + this.#basePath}/image/${id}${s}${f}`;
   }
 
 }

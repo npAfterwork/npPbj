@@ -1,11 +1,11 @@
 <ion-app>
-    <ion-menu type="overlay" contentId="main-content">
+    <ion-menu type="overlay" contentId="main-content" [disabled]="(menuService.visible$ | async) === false">
         <ion-list>
             <ion-item button="true" (click)="spinnerService.show()">sdfasdf sdf</ion-item>
         </ion-list>
     </ion-menu>
     <ion-content id="main-content">
-        <ion-header>
+        <ion-header *ngIf="menuService.visible$ | async">
             <ion-toolbar>
                 <ion-buttons slot="start">
                     <ion-menu-button></ion-menu-button>

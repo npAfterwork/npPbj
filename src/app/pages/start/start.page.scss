@@ -4,15 +4,21 @@
 :host {
   main {
     display: flex;
+    flex-direction: row-reverse;
     flex: 1;
     overflow: hidden;
-    @include breaks.breakpoint('sm') {
+    @include breaks.breakpoint-sm() {
       flex-direction: column;
       overflow: auto;
+      .wrapper {
+        width: 100%;
+      }
     }
   }
 
   .wrapper {
+    width: 50%;
+
     &:first-of-type {
       border-right: 1px solid grey;
     }

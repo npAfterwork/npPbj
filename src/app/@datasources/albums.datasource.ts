@@ -12,10 +12,13 @@ export abstract class NPBaseDataSource<T> extends DataSource<T> {
   #fetchedPages = new Set<number>();
   #subscription: Subscription = new Subscription();
 
+  onData$ = this.#dataSource.asObservable();
+
   abstract loadPage(page: number): Observable<{ items: T[], total: number }>;
 
   initialize() {
     this.loadPage(0).pipe(take(1)).subscribe((data) => this.#updatePage(0, data));
+    return this;
   }
 
   connect(collectionViewer: CollectionViewer): Observable<T[]> {
@@ -58,6 +61,10 @@ export abstract class NPBaseDataSource<T> extends DataSource<T> {
 
   #getPageForIndex(index: number): number {
     return Math.floor(index / this.pageSize);
+  }
+
+  debug() {
+    console.log(this.#cachedData);
   }
 }
 

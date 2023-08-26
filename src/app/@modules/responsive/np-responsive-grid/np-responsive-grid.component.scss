@@ -1,4 +1,22 @@
+@use '../../../../theme/breakpoints' as breaks;
+
 :host {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 16.6%);
+  @include breaks.breakpoint-xl() {
+    grid-template-columns: repeat(5, 20%);
+  }
+  @include breaks.breakpoint-lg() {
+    grid-template-columns: repeat(4, 25%);
+  }
+  @include breaks.breakpoint-md() {
+    grid-template-columns: repeat(3, 33.3%);
+  }
+  @include breaks.breakpoint-sm() {
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  @include breaks.breakpoint-xs() {
+    grid-template-columns: 100%;
+  }
 }

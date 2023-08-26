@@ -1,19 +1,19 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {IonicModule} from '@ionic/angular';
 
-import {NPResponsivRowComponent} from './np-responsiv-row.component';
+import {NPVirtualListComponent} from 'src/app/components/np-virtual-list/np-virtual-list.component';
 
-describe('NpResponsivRowComponent', () => {
-  let component: NPResponsivRowComponent<any>;
-  let fixture: ComponentFixture<NPResponsivRowComponent<any>>;
+describe('NPVirtualListComponent', () => {
+  let component: NPVirtualListComponent<any>;
+  let fixture: ComponentFixture<NPVirtualListComponent<any>>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NPResponsivRowComponent],
+      declarations: [NPVirtualListComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NPResponsivRowComponent);
+    fixture = TestBed.createComponent(NPVirtualListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

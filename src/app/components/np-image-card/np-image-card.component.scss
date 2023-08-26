@@ -1,0 +1,17 @@
+:host-context([base-item]) {
+  --np-image-fit: cover;
+  --np-image-ratio: 1;
+}
+
+:host {
+  ion-card {
+    margin: 1rem;
+    height: calc(100% - 2rem);
+
+    img {
+      width: 100%;
+      aspect-ratio: var(--np-image-ratio, auto);
+      object-fit: var(--np-image-fit, none);
+    }
+  }
+}

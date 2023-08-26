@@ -8,40 +8,40 @@ import {SessionUser} from "src/app/services/jam/model/sessionUser";
 const AUTH_STORAGE_KEY = 'pbj.auth';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
-    readonly #jamApiService = inject(JamApiService);
-    readonly #storage = inject(StorageService);
+  readonly #jamApiService = inject(JamApiService);
+  readonly #storage = inject(StorageService);
 
-    readonly #dataStore: { user?: SessionUser, jwt?: string } = {}
+  readonly #dataStore: { user?: SessionUser, jwt?: string } = {}
 
-    jwt() {
-        return this.#dataStore.jwt ?? '';
+  jwt() {
+    return this.#dataStore.jwt ?? '';
+  }
+
+  async login(
+    server: string,
+    username: string,
+    password: string,
+    keepMeLoggedIn: boolean
+  ) {
+    try {
+      const {user, jwt} = await firstValueFrom(this.#jamApiService.login(server,
+        {
+          client: CPBJ.CLIENT,
+          username,
+          password,
+          jwt: false
+        }));
+      this.#dataStore.user = user;
+      this.#dataStore.jwt = jwt; // TODO: still have to ask. not working without maybe other authorization header
+      // store the jwt or undefined in storage
+      await this.#storage.set(AUTH_STORAGE_KEY, keepMeLoggedIn ? jwt : undefined);
+    } catch (e) {
+      this.#dataStore.user = undefined;
+      console.log('login failed => error', e);
     }
-
-    async login(
-        server: string,
-        username: string,
-        password: string,
-        keepMeLoggedIn: boolean
-    ) {
-        try {
-            const {user, jwt} = await firstValueFrom(this.#jamApiService.login(server,
-                {
-                    client: CPBJ.CLIENT,
-                    username,
-                    password,
-                    jwt: true
-                }));
-            this.#dataStore.user = user;
-            this.#dataStore.jwt = jwt; // TODO: still have to ask. not working without maybe other authorization header
-            // store the jwt or undefined in storage
-            await this.#storage.set(AUTH_STORAGE_KEY, keepMeLoggedIn ? jwt : undefined);
-        } catch (e) {
-            this.#dataStore.user = undefined;
-            console.log('login failed => error', e);
-        }
-        return this.#dataStore.user;
-    }
+    return this.#dataStore.user;
+  }
 }

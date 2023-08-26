@@ -1,15 +1,15 @@
+import {HttpErrorResponse} from "@angular/common/http";
+import {NgModule} from '@angular/core';
+import {ApolloClientOptions, ApolloLink, createHttpLink, InMemoryCache, split} from '@apollo/client/core';
+import {setContext} from "@apollo/client/link/context";
+import {onError} from "@apollo/client/link/error";
+import {GraphQLWsLink} from "@apollo/client/link/subscriptions";
+import {getMainDefinition} from "@apollo/client/utilities";
 import {APOLLO_OPTIONS, ApolloModule} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
-import {NgModule} from '@angular/core';
-import {ApolloClientOptions, ApolloLink, InMemoryCache, split} from '@apollo/client/core';
-import {environment} from "../environments/environment";
-import {onError} from "@apollo/client/link/error";
-import {setContext} from "@apollo/client/link/context";
-import {GraphQLWsLink} from "@apollo/client/link/subscriptions";
 import {createClient} from "graphql-ws";
-import {getMainDefinition} from "@apollo/client/utilities";
-import {HttpErrorResponse} from "@angular/common/http";
 import {AuthService} from "src/app/services/auth/auth.service";
+import {environment} from "../environments/environment";
 
 const uri = 'http://localhost:4040/graphql'; // <-- add the URL of the GraphQL server here
 const subscriptionUrl = 'ws://localhost:4040/subscriptions';
@@ -42,9 +42,8 @@ const errorLink = onError(({graphQLErrors, networkError, response}) => {
 export function createApollo(httpLink: HttpLink, authService: AuthService): ApolloClientOptions<any> {
   const cache = new InMemoryCache({});
   // create http
-  // const http = createHttpLink({uri, credentials: 'same-origin'})
-
-  const http = httpLink.create({uri}); //  withCredentials: true
+  const http = createHttpLink({uri, credentials: 'include'})
+  // const http = httpLink.create({uri, withCredentials: true});
   const wsLink = new GraphQLWsLink(createClient({
     url: subscriptionUrl,
   }));
@@ -68,8 +67,9 @@ export function createApollo(httpLink: HttpLink, authService: AuthService): Apol
     return {
       headers: {
         ...headers,
-        Authorization: "Bearer " + authService.jwt(),
-        'Content-Type': 'application/json'
+        // Authorization: "Bearer " + authService.jwt(),
+        //'Content-Type': 'application/json'
+        // authorization: headers?.authorization
       },
     };
   });

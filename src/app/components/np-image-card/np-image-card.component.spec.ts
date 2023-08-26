@@ -1,19 +1,19 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {IonicModule} from '@ionic/angular';
 
-import {NPResponsivRowComponent} from './np-responsiv-row.component';
+import {NPImageCardComponent} from 'src/app/components/np-image-card/np-image-card.component';
 
-describe('NpResponsivRowComponent', () => {
-  let component: NPResponsivRowComponent<any>;
-  let fixture: ComponentFixture<NPResponsivRowComponent<any>>;
+describe('NpImageCardComponent', () => {
+  let component: NPImageCardComponent;
+  let fixture: ComponentFixture<NPImageCardComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NPResponsivRowComponent],
+      declarations: [NPImageCardComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NPResponsivRowComponent);
+    fixture = TestBed.createComponent(NPImageCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
