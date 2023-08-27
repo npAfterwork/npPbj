@@ -1,0 +1,10 @@
+<ion-card button="true" [style.--ion-card-background]="color">
+    <ion-card-header>
+        <ion-card-title>{{title}}</ion-card-title>
+        <ion-card-subtitle>{{type}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+    </ion-card-content>
+    <div counter *ngIf="count">{{count}}</div>
+</ion-card>

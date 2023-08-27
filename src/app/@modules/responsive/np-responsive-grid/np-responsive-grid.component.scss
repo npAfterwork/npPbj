@@ -1,22 +1,46 @@
 @use '../../../../theme/breakpoints' as breaks;
 
-:host {
-  display: grid;
-  grid-template-columns: repeat(6, 16.6%);
+:host-context([more-columns]) {
+  --np-column-count: 9;
   @include breaks.breakpoint-xl() {
-    grid-template-columns: repeat(5, 20%);
+    --np-column-count: 8;
   }
   @include breaks.breakpoint-lg() {
-    grid-template-columns: repeat(4, 25%);
+    --np-column-count: 6;
   }
   @include breaks.breakpoint-md() {
-    grid-template-columns: repeat(3, 33.3%);
+    --np-column-count: 4;
   }
   @include breaks.breakpoint-sm() {
-    grid-template-columns: repeat(2, 50%);
+    --np-column-count: 3;
+  }
+  @include breaks.breakpoint-xs() {
+    --np-column-count: 2;
   }
 
-  @include breaks.breakpoint-xs() {
-    grid-template-columns: 100%;
+}
+
+:host {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+
+  grid-template-columns: repeat(var(--np-column-count, 6), minmax(0, 1fr));
+
+  @include breaks.breakpoint-xl() {
+    --np-column-count: 5;
   }
+  @include breaks.breakpoint-lg() {
+    --np-column-count: 4;
+  }
+  @include breaks.breakpoint-md() {
+    --np-column-count: 3;
+  }
+  @include breaks.breakpoint-sm() {
+    --np-column-count: 2;
+  }
+  @include breaks.breakpoint-xs() {
+    --np-column-count: 1;
+  }
+
 }

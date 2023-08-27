@@ -1,0 +1,44 @@
+query albumIndex {
+  albumIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+
+query artistIndex {
+  artistIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+
+query folderIndex {
+  folderIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+
+query genreIndex {
+  genreIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+

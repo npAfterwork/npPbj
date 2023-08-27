@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Blank
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Blank</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div id="container">
+        <np-responsive-grid
+                more-columns
+                [items]="items"
+                [itemTemplate]="itemTemplate">
+        </np-responsive-grid>
+
+        <ng-template #itemTemplate let-item let-idx="idx">
+            <np-named-card
+                    squared
+                    [type]="type"
+                    [title]="item?.name ?? 'Loading'"
+                    [count]="item?.items.length"
+            ></np-named-card>
+        </ng-template>
+
+    </div>
+</ion-content>

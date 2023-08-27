@@ -33,7 +33,6 @@ export class HomePage implements OnInit {
       CDEFAULT_USER.password,
       true
     )
-    this.items.initialize();
   }
 
 

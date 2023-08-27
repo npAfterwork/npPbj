@@ -13,10 +13,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/category/category-page.module').then(m => m.CategoryPageModule)
   },
   {
+    path: 'index',
+    loadChildren: () => import('./pages/index/index.module').then(m => m.IndexPageModule)
+  },
+  {
     path: '',
     redirectTo: 'category',
     pathMatch: 'full'
   },
+
 ];
 
 @NgModule({

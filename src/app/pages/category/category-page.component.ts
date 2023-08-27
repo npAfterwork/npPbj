@@ -2,7 +2,6 @@ import {Component, inject, OnInit} from '@angular/core';
 import {AlbumDetailFragment} from "../../../@generated/np-api.service";
 import {CDEFAULT_USER} from "../../@core/defaults";
 import {AlbumsDataSource} from "../../@datasources/albums.datasource";
-import {NPResponsiveService} from "../../@modules/responsive/np-responsive.service";
 import {AuthService} from "../../services/auth/auth.service";
 import {JamApiService} from "../../services/jam/jam.api.service";
 
@@ -12,14 +11,7 @@ import {JamApiService} from "../../services/jam/jam.api.service";
   styleUrls: ['category-page.component.scss'],
 })
 export class CategoryPage implements OnInit {
-  responsive = inject(NPResponsiveService);
   items = new AlbumsDataSource();
-  state = this.responsive.state$;
-  xs = this.responsive.watchBreak('xs');
-  sm = this.responsive.watchBreak('sm');
-  md = this.responsive.watchBreak('md');
-  lg = this.responsive.watchBreak('lg');
-  xl = this.responsive.watchBreak('xl');
   readonly #authService = inject(AuthService);
   readonly #apiService = inject(JamApiService);
 

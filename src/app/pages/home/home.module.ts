@@ -11,17 +11,17 @@ import {HomePage} from './home.page';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule,
-    NPVirtualListComponent,
-    NgOptimizedImage,
-    NPImageCardComponent,
-    NPResponsivRowComponent
-  ],
-  declarations: [HomePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        HomePageRoutingModule,
+        NPVirtualListComponent,
+        NgOptimizedImage,
+        NPImageCardComponent,
+        NPResponsivRowComponent
+    ],
+    declarations: [HomePage]
 })
 export class HomePageModule {
 }

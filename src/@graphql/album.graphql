@@ -26,3 +26,4 @@ query albums($skip: Int!, $take: Int){
     total
   }
 }
+

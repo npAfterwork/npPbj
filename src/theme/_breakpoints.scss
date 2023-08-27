@@ -11,12 +11,12 @@ $media-direction: max; // min / max — default is min (mobile first)
 //lg	992px	size-lg-	offset-lg-	push-lg-	pull-lg-	Set columns when (min-width: 992px)
 //xl	1200px	size-xl-	offset-xl-	push-xl-	pull-xl-	Set columns when (min-width: 1200px)
 $breakpoints: (
-        'default': '',
-        'xs': 340px,
-        'sm': 576px,
-        'md': 768px,
-        'lg': 992px,
-        'xl': 1200px,
+  'default': '',
+  'xs': 415px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
 );
 /* --------------------------------------------------
    Breakpoint Mixin

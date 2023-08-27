@@ -60,6 +60,26 @@ export type ImageQueryVariables = GQL.Exact<{
 
 export type ImageQueryResult = { __typename: 'Query', artwork: { __typename: 'ArtworkQL', id: string, width?: number | null | undefined, height?: number | null | undefined } };
 
+export type AlbumIndexQueryVariables = GQL.Exact<{ [key: string]: never; }>;
+
+
+export type AlbumIndexQueryResult = { __typename: 'Query', albumIndex: { __typename: 'AlbumIndexQL', groups: Array<{ __typename: 'AlbumIndexGroupQL', name: string, items: Array<{ __typename: 'AlbumQL', id: string }> }> } };
+
+export type ArtistIndexQueryVariables = GQL.Exact<{ [key: string]: never; }>;
+
+
+export type ArtistIndexQueryResult = { __typename: 'Query', artistIndex: { __typename: 'ArtistIndexQL', groups: Array<{ __typename: 'ArtistIndexGroupQL', name: string, items: Array<{ __typename: 'ArtistQL', id: string }> }> } };
+
+export type FolderIndexQueryVariables = GQL.Exact<{ [key: string]: never; }>;
+
+
+export type FolderIndexQueryResult = { __typename: 'Query', folderIndex: { __typename: 'FolderIndexQL', groups: Array<{ __typename: 'FolderIndexGroupQL', name: string, items: Array<{ __typename: 'FolderQL', id: string }> }> } };
+
+export type GenreIndexQueryVariables = GQL.Exact<{ [key: string]: never; }>;
+
+
+export type GenreIndexQueryResult = { __typename: 'Query', genreIndex: { __typename: 'GenreIndexQL', groups: Array<{ __typename: 'GenreIndexGroupQL', name: string, items: Array<{ __typename: 'GenreQL', id: string }> }> } };
+
 export const AlbumDetailFragmentDoc = gql`
     fragment AlbumDetail on AlbumQL {
   id
@@ -231,6 +251,98 @@ export const ImageDocument = gql`
       super(apollo);
     }
   }
+export const AlbumIndexDocument = gql`
+    query albumIndex {
+  albumIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class AlbumIndexGQL extends Apollo.Query<AlbumIndexQueryResult, AlbumIndexQueryVariables> {
+    document = AlbumIndexDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ArtistIndexDocument = gql`
+    query artistIndex {
+  artistIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ArtistIndexGQL extends Apollo.Query<ArtistIndexQueryResult, ArtistIndexQueryVariables> {
+    document = ArtistIndexDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const FolderIndexDocument = gql`
+    query folderIndex {
+  folderIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class FolderIndexGQL extends Apollo.Query<FolderIndexQueryResult, FolderIndexQueryVariables> {
+    document = FolderIndexDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GenreIndexDocument = gql`
+    query genreIndex {
+  genreIndex {
+    groups {
+      name
+      items {
+        id
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GenreIndexGQL extends Apollo.Query<GenreIndexQueryResult, GenreIndexQueryVariables> {
+    document = GenreIndexDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 
   type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -255,7 +367,11 @@ export const ImageDocument = gql`
       private artistsGql: ArtistsGQL,
       private artistsInfoGql: ArtistsInfoGQL,
       private bandsGql: BandsGQL,
-      private imageGql: ImageGQL
+      private imageGql: ImageGQL,
+      private albumIndexGql: AlbumIndexGQL,
+      private artistIndexGql: ArtistIndexGQL,
+      private folderIndexGql: FolderIndexGQL,
+      private genreIndexGql: GenreIndexGQL
     ) {}
 
     album(variables: AlbumQueryVariables, options?: QueryOptionsAlone<AlbumQueryVariables>) {
@@ -312,5 +428,37 @@ export const ImageDocument = gql`
 
     imageWatch(variables: ImageQueryVariables, options?: WatchQueryOptionsAlone<ImageQueryVariables>) {
       return this.imageGql.watch(variables, options)
+    }
+
+    albumIndex(variables?: AlbumIndexQueryVariables, options?: QueryOptionsAlone<AlbumIndexQueryVariables>) {
+      return this.albumIndexGql.fetch(variables, options)
+    }
+
+    albumIndexWatch(variables?: AlbumIndexQueryVariables, options?: WatchQueryOptionsAlone<AlbumIndexQueryVariables>) {
+      return this.albumIndexGql.watch(variables, options)
+    }
+
+    artistIndex(variables?: ArtistIndexQueryVariables, options?: QueryOptionsAlone<ArtistIndexQueryVariables>) {
+      return this.artistIndexGql.fetch(variables, options)
+    }
+
+    artistIndexWatch(variables?: ArtistIndexQueryVariables, options?: WatchQueryOptionsAlone<ArtistIndexQueryVariables>) {
+      return this.artistIndexGql.watch(variables, options)
+    }
+
+    folderIndex(variables?: FolderIndexQueryVariables, options?: QueryOptionsAlone<FolderIndexQueryVariables>) {
+      return this.folderIndexGql.fetch(variables, options)
+    }
+
+    folderIndexWatch(variables?: FolderIndexQueryVariables, options?: WatchQueryOptionsAlone<FolderIndexQueryVariables>) {
+      return this.folderIndexGql.watch(variables, options)
+    }
+
+    genreIndex(variables?: GenreIndexQueryVariables, options?: QueryOptionsAlone<GenreIndexQueryVariables>) {
+      return this.genreIndexGql.fetch(variables, options)
+    }
+
+    genreIndexWatch(variables?: GenreIndexQueryVariables, options?: WatchQueryOptionsAlone<GenreIndexQueryVariables>) {
+      return this.genreIndexGql.watch(variables, options)
     }
   }

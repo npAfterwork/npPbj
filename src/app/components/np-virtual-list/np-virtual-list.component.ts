@@ -1,8 +1,8 @@
-import {DataSource} from "@angular/cdk/collections";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {NgTemplateOutlet} from "@angular/common";
 import {Component, EventEmitter, Input, OnInit, TemplateRef} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
+import {NPBaseDataSource} from "../../@datasources/albums.datasource";
 
 @Component({
   selector: 'np-virtual-list',
@@ -16,11 +16,14 @@ import {IonicModule} from "@ionic/angular";
   ]
 })
 export class NPVirtualListComponent<T> implements OnInit {
-  @Input() items: T[] | DataSource<T>;
+  @Input() items: T[] | NPBaseDataSource<T>;
   @Input() itemTemplate: TemplateRef<any>;
   itemClicked = new EventEmitter<T>;
 
   ngOnInit() {
+    if (this.items instanceof NPBaseDataSource) {
+      this.items.initialize();
+    }
   }
 
 }

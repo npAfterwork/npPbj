@@ -1,0 +1,34 @@
+:host {
+  aspect-ratio: 1;
+  display: block;
+  width: 100%;
+
+
+  ion-card {
+    //margin: 1rem;
+    //height: calc(100% - 2rem);
+    --ion-text-color: #f7f7f7; // title
+    --ion-color-step-600: #f7f7f7; // subtitle
+    --ion-card-color: #f7f7f7; // card content
+    margin: 0;
+    height: 100%;
+  }
+
+  [counter] {
+    text-align: center;
+
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    background: radial-gradient(rgba(220, 220, 220, 0.46), transparent 1.5rem);
+    border-radius: 50%;
+
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
